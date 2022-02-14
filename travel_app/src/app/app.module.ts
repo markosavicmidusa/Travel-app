@@ -13,6 +13,7 @@ import { MaterialModule } from './material.module';
 import { RoutingModule } from './routing.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserModule,
     MaterialModule,
     RoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
