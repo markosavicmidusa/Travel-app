@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/purple-green.css';
+
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+}
+
+mat-sidenav-container,  mat-sidenav-content, mat-sidenav {
+
+    height: 100%;
+    border: 1px solid red
+}
+
+mat-sidenav{
+
+    width: 18%;
+
+}
+mat-icon{
+    margin: 2px;
+}
+
+mat-list-item{
+    cursor: pointer;
+}
+mat-list-item:hover{
+
+    transform: scale(1.1);
+
+}
