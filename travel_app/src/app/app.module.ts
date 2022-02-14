@@ -9,7 +9,10 @@ import { TripsComponent } from './trips/trips.component';
 
 import { ProfileComponent } from './profile/profile.component';
 import { MyTripsComponent } from './profile/my-trips/my-trips.component';
+import { MaterialModule } from './material.module';
+import { RoutingModule } from './routing.module';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { MyTripsComponent } from './profile/my-trips/my-trips.component';
     MyTripsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MaterialModule,
+    RoutingModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
