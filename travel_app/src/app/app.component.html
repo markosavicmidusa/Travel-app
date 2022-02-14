@@ -1,4 +1,45 @@
 
 
 
-<router-outlet></router-outlet>
+  <mat-sidenav-container >
+   
+      <mat-sidenav [opened]="true"   style="border: 2px solid green ">
+        <section fxLayout="column" >
+          <mat-list role="list">
+            <mat-list-item role="listitem" routerLink="/">
+              <mat-icon >home</mat-icon>
+              Welcome
+            </mat-list-item>
+            <mat-list-item role="listitem" routerLink="/trips">
+              <mat-icon >flights</mat-icon>
+              Trips</mat-list-item>
+            <mat-list-item  role="listitem" routerLink="/login">
+              <mat-icon >login</mat-icon>
+              Login</mat-list-item>
+            <mat-list-item role="listitem" routerLink="/signup">
+              <mat-icon >how_to_reg</mat-icon>
+              Signup</mat-list-item>
+            <mat-list-item role="listitem" routerLink="/profile">
+              <mat-icon >person</mat-icon>
+              Profile</mat-list-item>
+            <mat-list-item role="listitem" >
+              <mat-icon >logout</mat-icon>
+              Logout</mat-list-item>
+
+          </mat-list>
+          
+        </section>
+    
+
+
+    </mat-sidenav>
+    <mat-sidenav-content>Main content
+      <p>This is a app component</p>
+      
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    
+  </mat-sidenav-container>
+
+  
+
