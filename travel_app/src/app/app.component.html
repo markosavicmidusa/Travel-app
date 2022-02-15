@@ -1,45 +1,72 @@
 
 
-
-  <mat-sidenav-container >
-   
-      <mat-sidenav [opened]="true"   style="border: 2px solid green ">
-        <section fxLayout="column" >
-          <mat-list role="list">
-            <mat-list-item role="listitem" routerLink="/">
-              <mat-icon >home</mat-icon>
-              Welcome
-            </mat-list-item>
-            <mat-list-item role="listitem" routerLink="/trips">
-              <mat-icon >flights</mat-icon>
-              Trips</mat-list-item>
-            <mat-list-item  role="listitem" routerLink="/login">
-              <mat-icon >login</mat-icon>
-              Login</mat-list-item>
-            <mat-list-item role="listitem" routerLink="/signup">
-              <mat-icon >how_to_reg</mat-icon>
-              Signup</mat-list-item>
-            <mat-list-item role="listitem" routerLink="/profile">
-              <mat-icon >person</mat-icon>
-              Profile</mat-list-item>
-            <mat-list-item role="listitem" >
-              <mat-icon >logout</mat-icon>
-              Logout</mat-list-item>
-
-          </mat-list>
-          
-        </section>
+  <mat-sidenav-container>
     
+  <mat-sidenav [opened]="true" #sidenav style="border: 2px solid green">
 
+    <section fxLayout="column" fxLayoutAlign="start">
+      <mat-list role="list" fxLayoutGap="15px">
+        <mat-list-item role="listitem" routerLink="/" (click)="sidenav.close()">
+          <mat-icon>home</mat-icon>
+          <p>Welcome</p>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/trips" (click)="sidenav.close()">
+          <mat-icon>flights</mat-icon>
+          <p>Trips</p>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/login" (click)="sidenav.close()">
+          <mat-icon>login</mat-icon>
+          <p>Login</p>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/signup" (click)="sidenav.close()">
+          <mat-icon>how_to_reg</mat-icon>
+          <p>Signup</p>
+        </mat-list-item>
+        <mat-list-item role="listitem" routerLink="/profile" (click)="sidenav.close()">
+          <mat-icon>person</mat-icon>
+          <p>Profile</p>
+        </mat-list-item>
+        <mat-list-item role="listitem" (click)="sidenav.close()">
+          <mat-icon>logout</mat-icon>
+          <p>Logout</p>
+        </mat-list-item>
 
-    </mat-sidenav>
-    <mat-sidenav-content>Main content
-      <p>This is a app component</p>
+      </mat-list>
+
+    </section>
+
+    
+    
+  </mat-sidenav>
+  <mat-sidenav-content id="background">
+    
+    
+    <mat-toolbar color="primary" fxLayoutGap="10px">
       
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
+      <button mat-raised-button color="accent" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span style="border: 2px solid green">
+        <a routerLink="" style="font-size: 20pt; font-weight: bold;">Travel App</a>
+      </span>
+      
+      
+      <span fxFlex fxLayoutAlign="end" fxLayoutGap="2%" fxHide.xs>
+        
+        <a routerLink="">Welcome</a>
+        <a routerLink="/trips">Trips</a>
+        <a routerLink="/signup">Signup</a>
+        <a routerLink="/login">Login</a>
+        <a routerLink="/profile">Profile</a>
+        <a routerLink="/logout">Logout</a>
+        
+      </span>
+      
+    </mat-toolbar>
     
-  </mat-sidenav-container>
+      <router-outlet ></router-outlet>
 
+    </mat-sidenav-content>
   
+  </mat-sidenav-container>
 
