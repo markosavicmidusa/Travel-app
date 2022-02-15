@@ -1,7 +1,5 @@
+<mat-sidenav-container>
 
-
-  <mat-sidenav-container>
-    
   <mat-sidenav [opened]="true" #sidenav style="border: 2px solid green">
 
     <section fxLayout="column" fxLayoutAlign="start">
@@ -35,38 +33,45 @@
 
     </section>
 
-    
-    
+
+
   </mat-sidenav>
   <mat-sidenav-content id="background">
-    
-    
+
+
     <mat-toolbar color="primary" fxLayoutGap="10px">
-      
+
       <button mat-raised-button color="accent" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <span style="border: 2px solid green">
         <a routerLink="" style="font-size: 20pt; font-weight: bold;">Travel App</a>
       </span>
-      
-      
+
+
       <span fxFlex fxLayoutAlign="end" fxLayoutGap="2%" fxHide.xs>
-        
+
         <a routerLink="">Welcome</a>
         <a routerLink="/trips">Trips</a>
         <a routerLink="/signup">Signup</a>
         <a routerLink="/login">Login</a>
         <a routerLink="/profile">Profile</a>
         <a routerLink="/logout">Logout</a>
-        
+
       </span>
-      
+
     </mat-toolbar>
+
+    <router-outlet></router-outlet>
+ 
     
-      <router-outlet ></router-outlet>
+  </mat-sidenav-content>
 
-    </mat-sidenav-content>
-  
-  </mat-sidenav-container>
 
+</mat-sidenav-container>
+
+  <mat-toolbar color="primary" fxLayoutGap="10px" fxLayoutAlign="center center">
+    
+    <p id="firm">Midusa software development studio</p>
+    
+  </mat-toolbar>
