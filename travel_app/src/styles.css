@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 
 html, body {
@@ -7,6 +7,8 @@ html, body {
     font-family: 'Roboto', sans-serif;
     background-color: black;
 }
+
+
 
 mat-sidenav-container,  mat-sidenav-content, mat-sidenav {
 
@@ -16,11 +18,12 @@ mat-sidenav-container,  mat-sidenav-content, mat-sidenav {
 
 mat-sidenav{
 
-    width: 15%;
+    width: 25%;
 
 }
 mat-icon{
     margin: 2px;
+    margin-top: 0.5px;
 }
 
 mat-list-item{
