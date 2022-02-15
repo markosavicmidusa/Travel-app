@@ -6,6 +6,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -16,7 +21,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatCardModule
     
   ],
   exports: [
@@ -25,7 +35,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatCardModule
   ]
 })
 export class MaterialModule { }
