@@ -1,1 +1,18 @@
-<p>login works!</p>
+<section fxLayoutAlign="center center" fxLayoutGap="2%" style="margin-top: 10%;">
+    <p style="font-size: 50pt; color: #ffffff; font-family: 'Dancing Script', cursive;">Login</p>
+    
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutAlign="center center" fxLayout="column" style="padding:20px;background-color: #ffffff; opacity:0.8;margin-top: 8% ; border-radius: 5px;height:300px" fxFlex="30%">
+       
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input ngModel name="email" type="email" matInput placeholder="Ex. savic.marko90@gmail.com" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill" hintLabel="Max 5 characters">
+            <mat-label>Password</mat-label>
+            <input ngModel name="password" matInput required #password type="password">
+            <mat-hint align="end">{{password.value?.length || 0}}/5</mat-hint>
+        </mat-form-field>
+        <button type="submit" [disabled]="f.invalid" mat-raised-button color="primary" style="border:2px solid;width: 55%;margin-top: 12px;"> Login ! </button>
+    </form>
+    
+</section>

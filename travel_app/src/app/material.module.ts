@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -26,7 +27,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     FormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
     
   ],
   exports: [
@@ -40,7 +42,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     FormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }

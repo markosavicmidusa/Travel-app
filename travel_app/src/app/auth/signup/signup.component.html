@@ -1,1 +1,41 @@
-<p>signup works!</p>
+
+<!--<section  fxLayoutAlign="center center" style="border:2px solid green;font-size: 25pt;color: #ffffff;">Signup</section>
+-->
+<section fxLayoutAlign="center center" fxLayoutGap="2%" style="margin-top: 1.5%;">
+    <p style="font-size: 50pt; color: #ffffff; font-family: 'Dancing Script', cursive;">Signup</p>
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutAlign="center center" fxLayout="column" style="padding:5px;background-color: #ffffff; opacity:0.8; border-radius: 5px; height: 80vh; width: 30%; font-size: 10pt;">
+
+        
+        <mat-form-field appearance="fill" >
+            <mat-label>Forname</mat-label>
+            <input matInput required ngModel name="forname">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Surname</mat-label>
+            <input matInput required ngModel name="surname">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput required ngModel name="email">
+        </mat-form-field>
+        <mat-form-field appearance="fill" hintLabel="Max 5 characters">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput required #password ngModel name="password">
+            <mat-hint align="end">{{password.value?.length || 0}}/5</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone number</mat-label>
+            <input matInput required ngModel name="number">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput required ngModel name="address">
+        </mat-form-field>
+        <mat-checkbox  ngModel name="checkbox" required>
+            <p> I accept the terms and conditions</p>
+        </mat-checkbox>
+        <button type="submit" mat-raised-button color="warn" [disabled]="f.invalid" style="border:2px solid;width: 55%;" > Signup ! </button>
+    </form>
+    
+
+</section>
