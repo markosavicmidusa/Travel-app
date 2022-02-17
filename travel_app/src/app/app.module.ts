@@ -14,6 +14,7 @@ import { RoutingModule } from './routing.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TripsServiceService } from './trips/trips-service.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FlexLayoutModule,
     NoopAnimationsModule
   ],
-  providers: [],
+  providers: [TripsServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

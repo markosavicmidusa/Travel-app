@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -28,7 +31,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FormsModule,
     FlexLayoutModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     
   ],
   exports: [
@@ -43,7 +49,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FormsModule,
     FlexLayoutModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { }
