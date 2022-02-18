@@ -1,0 +1,42 @@
+<section style="height:80vh; width: 60vh;">
+
+    <img mat-card-image src="{{recievedData.picture_path}}" alt="Photo">
+    
+    <h1> {{ recievedData.destination }} for {{recievedData.price}} € <i style="color:green">({{recievedData.status}})</i></h1>
+    <h3 mat-dialog-title>From {{ recievedData.time | date}} in duration of {{recievedData.duration}} days !</h3>
+    <mat-dialog-content>
+        <p>{{recievedData.description}}</p>
+        
+        <p>Distance : {{recievedData.distance}} km</p>
+        <p>Travel Type : {{recievedData.travel_type}}</p>
+        <h1>Average grade: {{average_grade}}</h1>
+        <div style="color: gold;margin-bottom: 10%;" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+            <div *ngIf="starRating1">
+                <mat-icon>star</mat-icon>
+            </div>
+            <div *ngIf="starRating2">
+                <mat-icon>star</mat-icon>
+            </div>
+            <div *ngIf="starRating3">
+                <mat-icon>star</mat-icon>
+            </div>
+            <div *ngIf="starRating4">
+                <mat-icon>star</mat-icon>
+            </div>
+            <div *ngIf="starRating5">
+                <mat-icon>star</mat-icon>
+            </div>
+        </div> 
+        <p>Recensents : {{recievedData.recensents}}...</p>
+        <p>Recensions : {{recievedData.recensions}}...</p>
+        
+
+    </mat-dialog-content>
+    <h4>Make a reservation</h4>
+    <mat-dialog-actions>
+
+        <button mat-button [mat-dialog-close]="true" color="primary">Yes</button>
+        <button mat-button [mat-dialog-close]="false">No</button>
+    </mat-dialog-actions>
+
+</section>
