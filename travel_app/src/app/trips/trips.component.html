@@ -20,7 +20,7 @@
                 <mat-label>Price</mat-label>
                 <mat-select>
                     <mat-option *ngFor='let price of prices' [value]='price.value'>{{price.viewValue1}} -
-                        {{price.viewValue2}} <mat-icon>euro</mat-icon>
+                        {{price.viewValue2}} €
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -51,283 +51,119 @@
                 <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
+                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
+                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
+                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
                     <mat-card-content>
                         <h2>
-                            Hot price of {{currentTravel.price }} $
+                            Hot price of {{this.TravelData.currentTravel.price }} €
                         </h2>
                         <p>
-                            {{currentTravel.description.substring(0,50)}}...
+                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
                         </p>
                     </mat-card-content>
                     <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
+                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
                     </mat-card-actions>
                 </mat-card>
                 <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
+                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
+                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
+                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
                     <mat-card-content>
                         <h2>
-                            Hot price of {{currentTravel.price }} $
+                            Hot price of {{this.TravelData.currentTravel.price }} €
                         </h2>
                         <p>
-                            {{currentTravel.description.substring(0,50)}}...
+                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
                         </p>
                     </mat-card-content>
                     <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
+                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
                     </mat-card-actions>
                 </mat-card>
                 <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
+                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
+                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
+                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
                     <mat-card-content>
                         <h2>
-                            Hot price of {{currentTravel.price }} $
+                            Hot price of {{this.TravelData.currentTravel.price }} €
                         </h2>
                         <p>
-                            {{currentTravel.description.substring(0,50)}}...
+                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
                         </p>
                     </mat-card-content>
                     <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
+                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
                     </mat-card-actions>
                 </mat-card>
                 <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
+                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
+                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
+                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
                     <mat-card-content>
                         <h2>
-                            Hot price of {{currentTravel.price }} $
+                            Hot price of {{this.TravelData.currentTravel.price }} €
                         </h2>
                         <p>
-                            {{currentTravel.description.substring(0,50)}}...
+                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
                         </p>
                     </mat-card-content>
                     <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
+                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
                     </mat-card-actions>
                 </mat-card>
                 <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
+                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
+                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
+                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
                     <mat-card-content>
                         <h2>
-                            Hot price of {{currentTravel.price }} $
+                            Hot price of {{this.TravelData.currentTravel.price }} €
                         </h2>
                         <p>
-                            {{currentTravel.description.substring(0,50)}}...
+                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
                         </p>
                     </mat-card-content>
                     <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
+                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
                     </mat-card-actions>
                 </mat-card>
                 <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
+                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
+                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
+                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
                     <mat-card-content>
                         <h2>
-                            Hot price of {{currentTravel.price }} $
+                            Hot price of {{this.TravelData.currentTravel.price }} €
                         </h2>
                         <p>
-                            {{currentTravel.description.substring(0,50)}}...
+                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
                         </p>
                     </mat-card-content>
                     <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
+                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
                     </mat-card-actions>
                 </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{currentTravel.price }} $
-                        </h2>
-                        <p>
-                            {{currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <a href='/'>more info ></a>
-                        <button mat-raised-button color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
+                
+                
 
             </div>
 
