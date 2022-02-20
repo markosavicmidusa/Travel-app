@@ -1,0 +1,14 @@
+
+<h1 mat-dialog-title>Make a payment for this trip ?</h1>
+<mat-dialog-content>
+<h2> This action will:</h2>
+<h3> 1) Take you to the payment method</h3>
+<h3> 2) Change status of current travel to 'finished' </h3>
+<h3> 3) Redirect this travel to 'Finished trips tab'</h3>
+<br>
+<p>Go to payment or cancel </p>
+<mat-dialog-actions>
+  <button color="primary" mat-button [mat-dialog-close]="true">Pay</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="true">Cancel</button>
+</mat-dialog-actions>
