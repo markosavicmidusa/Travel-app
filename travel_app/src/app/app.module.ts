@@ -16,6 +16,9 @@ import { FinishedTripsComponent } from './profile/finished-trips/finished-trips.
 import { MyBasketComponent } from './profile/my-basket/my-basket.component';
 import { CanceledTripsComponent } from './profile/canceled-trips/canceled-trips.component';
 import { AddToCardComponent } from './trips/add-to-card/add-to-card.component';
+import { PayTripComponent } from './profile/my-basket/pay-trip/pay-trip.component';
+import { DeleteTripComponent } from './profile/delete-trip/delete-trip.component';
+import { RateTripComponent } from './profile/finished-trips/rate-trip/rate-trip.component';
 
 
 
@@ -32,7 +35,10 @@ import { AddToCardComponent } from './trips/add-to-card/add-to-card.component';
     FinishedTripsComponent,
     MyBasketComponent,
     CanceledTripsComponent,
-    AddToCardComponent
+    AddToCardComponent,
+    PayTripComponent,
+    DeleteTripComponent,
+    RateTripComponent
     
   ],
   imports: [
