@@ -1,0 +1,15 @@
+#trip{
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#trip:hover{
+    
+    background-color: rgb(255, 223, 206);
+    
+}
+
+mat-icon:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
