@@ -1,42 +1,87 @@
 <section fxLayoutAlign="center center" fxLayoutGap="2%" style=" height:87%;margin:1%">
 
     <div fxLayout="row"
-        style="height:100%;width: 80%; padding:10px;background-color: #ffffff; opacity:0.8; border-radius: 5px; font-size: 10pt;">
+        style="height:100%;width: 75%; padding:10px;background-color: #ffffff; opacity:0.8; border-radius: 5px; font-size: 10pt;">
 
-        <div id="profile" fxLayoutAlign="center center" fxLayout="column" lxLayoutGap="20px">
-            <img mat-card-image src="../../assets/images/profile.png" alt="Photo"
-                style="border-radius:50px; height:35%;width: 32%;">
-            <h1>Marko Savic</h1>
-            <h4>Email:</h4>
-            <p>savic.marko90@gmail.com</p>
-            <h4>Address:</h4>
-            <p>Volgina 9, Kaludjerica</p>
-            <h4>Favorite trips info:</h4>
-            <p>My favorite trips are when I am with my family.We allways have a good time together wherever we are</p>
+        <div id="profile" fxLayoutAlign="center start" fxLayout="column" fxLayoutGap="5px">
+
+            <div style="width:65%;height: 15vh; display:flex;" fxLayout="row" fxLayoutGap="5px">
+                <img mat-card-image src="../../assets/images/profile.png" alt="Photo"
+                    style="border-radius:50px;height:90%;width:30%;flex:2;">
+                <mat-icon style="flex:1;font-size: 20pt;cursor: pointer;" (click)="isEditable=!isEditable;">edit
+                </mat-icon>
+            </div>
+            <div *ngIf="!isEditable">
+
+
+
+
+                <h1>Marko Savic</h1>
+                <h4>Email:</h4>
+                <p>savic.marko90@gmail.com</p>
+                <h4>Address:</h4>
+                <p>Volgina 9, Kaludjerica</p>
+                <h4>Favorite trips info:</h4>
+                <p>My favorite trips are when I am with my family.We allways have a good time together wherever we are
+                </p>
+            </div>
+            <div *ngIf="isEditable">
+                <form action="">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Surname</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Phone number</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <button type="submit" color="primary" mat-raised-button>Submit</button>
+                </form>
+            </div>
 
         </div>
+
+
+
+
         <div id="trips_tab" fxLayout="column">
 
             <mat-tab-group>
                 <mat-tab label="My basket">
 
-                    <div id="list" 
-                        fxLayoutAlign="center start">
+                    <div id="list" fxLayoutAlign="start center" fxLayout="column">
 
                         <app-my-basket></app-my-basket>
 
                     </div>
+
                 </mat-tab>
                 <mat-tab label="Finished trips">
 
-                    <div id="list" 
-                        fxLayoutAlign="center start">
-                    <app-finished-trips></app-finished-trips>
+                    <div id="list" fxLayoutAlign="center start">
+                        <app-finished-trips></app-finished-trips>
                     </div>
                 </mat-tab>
                 <mat-tab label="Canceled trips">
                     <div id="list" fxLayoutAlign="center start">
-                    <app-canceled-trips></app-canceled-trips>
+                        <app-canceled-trips></app-canceled-trips>
                     </div>
                 </mat-tab>
             </mat-tab-group>
