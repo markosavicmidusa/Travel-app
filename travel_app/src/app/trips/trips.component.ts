@@ -34,7 +34,7 @@ export class TripsComponent implements OnInit {
 
   public travels: TravelType[] = [
 
-    { value: 'airplane', viewValue: "Airplane" },
+    { value: 'plane', viewValue: "Airplane" },
     { value: 'train', viewValue: "Train" },
     { value: 'bus', viewValue: "Bus" }
 
@@ -95,15 +95,22 @@ export class TripsComponent implements OnInit {
   }
 
   fastSearch(parametar: any) {
-
+    this.travelsObject = [];
     this.travelsObject= this.TravelData.getTravelsByParametar(parametar.value);
      
   }
 
   onSubmit(form: NgForm){
-    console.log(form);
-
-    
+  
+    this.travelsObject = [];
+    this.travelsObject= this.TravelData.getTravelsByParametars(form.value.direction, form.value.price, form.value.travel_type);
+  
   }
+
+  putOnPreviousState(){
+    this.travelsObject = [];
+    this.travelsObject = this.TravelData.getTravels();
+  }
+
 
 }
