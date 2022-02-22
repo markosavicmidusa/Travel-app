@@ -28,9 +28,7 @@ padding-left: 10px;
 
 #list{
     flex: 5;
-  
     overflow-y: scroll;
-    margin-top: 1%;
 }
 
 ::-webkit-scrollbar {
