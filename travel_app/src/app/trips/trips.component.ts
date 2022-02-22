@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddToCardComponent } from './add-to-card/add-to-card.component';
-import { TripsServiceService } from './trips-service.service';
+import { TripsModel, TripsServiceService } from './trips-service.service';
 
 
 export interface TravelType {
@@ -25,7 +26,10 @@ export interface PricesRange {
 
 export class TripsComponent implements OnInit {
 
-  constructor(public TravelData: TripsServiceService, private dialog: MatDialog) { }
+
+  constructor(public TravelData: TripsServiceService, private dialog: MatDialog) {
+
+  }
 
 
   public travels: TravelType[] = [
@@ -48,38 +52,58 @@ export class TripsComponent implements OnInit {
 
 
 
+
+
   ngOnInit(): void {
+
+
+
 
   }
 
-  addToCardDialog() {
+  /*destination: any;*/
 
+  isSearchActive = false;
+
+  travelsObject: Array<TripsModel> = this.TravelData.getTravels();
+
+
+  openReservationDialog(id: number) {
+
+    var travel = this.TravelData.getCurrentTravelObject(id)
+    console.log(travel);
 
     const dialogRef = this.dialog.open(AddToCardComponent, {
       data: {
-        id: this.TravelData.currentTravel.id,
-        destination: this.TravelData.currentTravel.destination,
-        picture_path: this.TravelData.currentTravel.picture_path,
-        travel_type: this.TravelData.currentTravel.travel_type,
-        duration: this.TravelData.currentTravel.duration,
-        distance: this.TravelData.currentTravel.distance,
-        price: this.TravelData.currentTravel.price,
-        description: this.TravelData.currentTravel.description,
-        time: this.TravelData.currentTravel.time,
-        recensents: this.TravelData.currentTravel.recensents,
-        recensions: this.TravelData.currentTravel.recensions,
-        grade: this.TravelData.currentTravel.grade,
-        status: this.TravelData.currentTravel.status
+        id: travel.id,
+        destination: travel.destination,
+        picture_path: travel.picture_path,
+        travel_type: travel.travel_type,
+        duration: travel.duration,
+        distance: travel.distance,
+        price: travel.price,
+        description: travel.description,
+        time: travel.time,
+        recensents: travel.recensents,
+        recensions: travel.recensions,
+        grade: travel.grade,
+        status: travel.status
       }
     });
 
 
   }
- 
 
+  fastSearch(parametar: any) {
 
+    this.travelsObject= this.TravelData.getTravelsByParametar(parametar.value);
+     
+  }
 
+  onSubmit(form: NgForm){
+    console.log(form);
 
+    
+  }
 
 }
-

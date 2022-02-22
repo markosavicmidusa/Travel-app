@@ -3,167 +3,68 @@
     <div fxLayout="row"
         style="padding:10px;background-color: #ffffff; opacity:0.8; border-radius: 5px; height: 80vh; width: 80%; font-size: 10pt;">
 
-        <form id="filter" fxLayoutAlign="center center" fxLayout="column" lxLayoutGap="20px">
+        <form id="filter" fxLayoutAlign="center center" fxLayout="column" lxLayoutGap="20px" #f="ngForm" (ngSubmit)="onSubmit(f)">
             <h1>Filters</h1>
 
             <mat-form-field>
                 <mat-label>Direction</mat-label>
-                <input matInput name="title">
+                <input matInput name="title" ngModel name="direction" required>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Travel type</mat-label>
-                <mat-select>
-                    <mat-option *ngFor='let travel of travels' [value]='travel.value'>{{travel.viewValue}}</mat-option>
+                <mat-select ngModel name="travel_type" #travel_type="ngModel" required>
+                    <mat-option *ngFor='let travel of travels' [value]='travel.value'  required>{{travel.viewValue}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Price</mat-label>
-                <mat-select>
-                    <mat-option *ngFor='let price of prices' [value]='price.value'>{{price.viewValue1}} -
+                <mat-select ngModel name="price" #price="ngModel" required>
+                    <mat-option *ngFor='let price of prices' [value]='price.value'  >{{price.viewValue1}} -
                         {{price.viewValue2}} €
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-form-field class="example-full-width" appearance="fill" >
                 <mat-label>Choose a starting date</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput [matDatepicker]="picker" ngModel name="date" required>
                 <mat-datepicker-toggle matSuffix [for]="picker">
                     <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            <button type="submit" mat-raised-button color="warn"> Submit filters</button>
+            <button type="submit" mat-raised-button color="warn" [disabled]="f.invalid">Submit filters</button>
 
 
         </form>
         <div id="trips_list" fxLayout="column">
 
-            <div id="fast-search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1%" style="margin:5%">
+            <div id="fast-search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1%" style="margin:2%">
                 <i class="fa fa-search icon"></i>
                 <input type="text" placeholder="Look out for your destination"
-                    style="width:40%;height:70%;border-radius:5px;font-size:16pt;">
+                    style="width:40%;height:70%;border-radius:5px;font-size:16pt;" ngModel #fastSearchParametar="ngModel"  (keyup)="fastSearch(fastSearchParametar)">
             </div>
-            <div id="list" style="display: flex;flex-wrap: wrap; flex-direction: row;"
-                fxLayoutAlign="center start">
+            <div id="list" style="display: flex;flex-wrap: wrap; flex-direction: row;" fxLayoutAlign="center start">
 
+                <mat-card *ngFor="let travel of travelsObject" fxFlex="30%" style="margin:15px;">
+                    <mat-card-header fxLayoutAlign="start start">
+                        <mat-card-title >{{travel.destination.substring(0,15)}}</mat-card-title>
+                        <mat-card-subtitle >{{travel.time | date}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="{{travel.picture_path}}" alt="Photo"
+                        style="height:30%;width:100%;border-radius: 3px;" >
+                    <mat-card-content>
+                        <h2 >
+                            Hot price of {{travel.price }} €
+                        </h2>
+                        <p >
+                            {{travel.description.substring(0,100)}}...
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
+                        <button mat-raised-button (click)="openReservationDialog(travel.id)" color="warn">Add to card</button>
+                    </mat-card-actions>
+                </mat-card>
 
-
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{this.TravelData.currentTravel.price }} €
-                        </h2>
-                        <p>
-                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{this.TravelData.currentTravel.price }} €
-                        </h2>
-                        <p>
-                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{this.TravelData.currentTravel.price }} €
-                        </h2>
-                        <p>
-                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{this.TravelData.currentTravel.price }} €
-                        </h2>
-                        <p>
-                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{this.TravelData.currentTravel.price }} €
-                        </h2>
-                        <p>
-                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                <mat-card class="example-card" fxFlex="20%" style="margin:15px;">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{this.TravelData.currentTravel.destination}}</mat-card-title>
-                        <mat-card-subtitle>{{this.TravelData.currentTravel.time | date}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="{{this.TravelData.currentTravel.picture_path}}" alt="Photo">
-                    <mat-card-content>
-                        <h2>
-                            Hot price of {{this.TravelData.currentTravel.price }} €
-                        </h2>
-                        <p>
-                            {{this.TravelData.currentTravel.description.substring(0,50)}}...
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <button mat-raised-button (click)="addToCardDialog()" color="warn">Add to card</button>
-                    </mat-card-actions>
-                </mat-card>
-                
-                
 
             </div>
 
