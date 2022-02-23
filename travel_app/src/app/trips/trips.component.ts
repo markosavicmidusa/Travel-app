@@ -27,8 +27,8 @@ export interface PricesRange {
 export class TripsComponent implements OnInit {
 
 
-  constructor(public TravelData: TripsServiceService, private dialog: MatDialog) {
-
+  constructor(public TravelData: TripsServiceService, private dialog: MatDialog){
+    
   }
 
 
