@@ -49,3 +49,37 @@ padding-left: 10px;
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000; 
   }
+
+
+  mat-card{
+      width:30%;
+      margin:15px;
+  }
+
+
+
+  @media only screen and (max-width: 1830px) {
+ 
+    #list > mat-card{
+        width:40%;
+
+    }
+    
+  }
+
+  @media only screen and (max-width: 960px) {
+ 
+    #list > mat-card{
+        width:80%;
+
+    }
+  }
+
+  @media only screen and (max-width: 635px) {
+ 
+    #list > mat-card{
+        width:80%;
+
+    }
+   
+  }

@@ -21,3 +21,17 @@ mat-list-item {
     height: 50px;
 
 }
+
+@media only screen and (max-width: 500px) {
+ 
+    mat-sidenav{
+        width: 15vh;
+    }
+
+    mat-sidenav-content p{
+        font-size: 8pt;
+    }
+    
+
+
+}

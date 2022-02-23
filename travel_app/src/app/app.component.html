@@ -39,7 +39,7 @@
   <mat-sidenav-content >
 
     <div id="background" style="height: 93.4% ;">
-      <mat-toolbar color="primary" fxLayoutGap="10px">
+      <mat-toolbar color="primary" fxLayoutGap="10px" >
 
       <button mat-raised-button color="accent" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -49,7 +49,7 @@
       </span>
 
 
-      <span fxFlex fxLayoutAlign="end" fxLayoutGap="2%" fxHide.xs>
+      <span fxFlex fxLayoutAlign="end" fxLayoutGap="2%" fxHide.xs fxHide.sm>
 
         <a routerLink="">Welcome</a>
         <a routerLink="/trips">Trips</a>
@@ -63,7 +63,7 @@
 
     </mat-toolbar>
     
-      <p fxLayoutAlign="center center" fxLayout="row" style="color:red; font-weight: bold;" *ngIf="!profile.isLogedIn">(To proceed, you need to signup or login first)
+      <p fxLayoutAlign="center center" fxLayout="row" style="color:red; font-weight: bold;" *ngIf="!profile.isLogedIn" >(To proceed, you need to signup or login first)
       </p>
     <router-outlet></router-outlet>
     </div>
