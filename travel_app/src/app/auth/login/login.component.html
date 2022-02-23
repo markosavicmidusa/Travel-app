@@ -5,14 +5,16 @@
        
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
-            <input ngModel name="email" type="email" matInput placeholder="Ex. savic.marko90@gmail.com" required>
+            <input ngModel name="email" type="email" matInput #emailInput="ngModel" placeholder="Ex. savic.marko90@gmail.com" required>
+            <mat-error *ngIf="emailInput.hasError('required')">The field should not be empty</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Enter the correct mail format</mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill" hintLabel="Max 5 characters">
+        <mat-form-field appearance="fill" hintLabel="Max 10 characters">
             <mat-label>Password</mat-label>
-            <input ngModel name="password" matInput required #password type="password">
-            <mat-hint align="end">{{password.value?.length || 0}}/5</mat-hint>
+            <input ngModel name="password" matInput required  #password="ngModel" type="password">
+            <mat-hint align="end">{{password.value?.length || 0}}/10</mat-hint>
+            <mat-error *ngIf="">The field should not be empty</mat-error>
         </mat-form-field>
-        <button type="submit" [disabled]="f.invalid" mat-raised-button color="primary" style="border:2px solid;width: 55%;margin-top: 12px;"> Login ! </button>
+        <button type="submit" [disabled]="f.invalid || passwordLength(password.value?.length) " mat-raised-button color="primary" style="border:2px solid;width: 55%;margin-top: 12px;"> Login ! </button>
     </form>
-    
 </section>

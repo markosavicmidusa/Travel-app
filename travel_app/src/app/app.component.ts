@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { ProfileServiceService } from './profile/profile-service.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +10,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'travel_app';
 
+  constructor(public ProfileService: ProfileServiceService){}
   sideNavIsOpen = true;
 
-
+  profile=this.ProfileService.currentProfile;
 
 
 }

@@ -1,15 +1,29 @@
 <section fxLayoutAlign="center center">
 
-    <div  action="/trips" fxFlex="70%"  fxLayout="column" fxLayoutGap="30px" style="background-color:none; margin-top: 5%;">
-        
-            <header>
-                <p fxLayoutAlign="center" style="font-size: 40pt; font-weight: bold; color:#ffffff">Welcome to travel agency</p>
-                <p fxLayoutAlign="center" style="font-size: 18pt; font-family: 'Dancing Script', cursive;color:#ffffff">Where travel becomes an unforgetable advanture</p>
-            </header>
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <a routerLink="/trips" mat-raised-button color="primary" style="height:50px;width:30%;font-size: 15pt;"  fxLayoutAlign="center center"><mat-icon style="margin-right:10px;">search</mat-icon>Find your travel</a>
-            </div>
-        </div >
+    <div action="/trips" fxFlex="70%" fxLayout="column" fxLayoutGap="30px"
+        style="background-color:none; margin-top: 5%;">
+
+        <header>
+            <p fxLayoutAlign="center" style="font-size: 40pt; font-weight: bold; color:#ffffff">Welcome to travel agency
+            </p>
+            <p fxLayoutAlign="center" style="font-size: 18pt; font-family: 'Dancing Script', cursive;color:#ffffff">
+                Where travel becomes an unforgetable advanture</p>
+        </header>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <a *ngIf="profile.isLogedIn" routerLink="/trips" mat-raised-button color="primary"
+                style="height:50px;width:30%;font-size: 15pt;" fxLayoutAlign="center center">
+                <mat-icon style="margin-right:10px;">search</mat-icon>Find your travel
+            </a>
+            <a *ngIf="!profile.isLogedIn" routerLink="/login" mat-raised-button color="primary"
+                style="height:50px;width:30%;font-size: 15pt; margin-top: 3%;" fxLayoutAlign="center center">
+                <mat-icon style="margin-right:10px;">login</mat-icon>Login !
+            </a>
+            <a *ngIf="!profile.isLogedIn" routerLink="/signup" mat-raised-button color="primary"
+                style="height:50px;width:30%;font-size: 15pt; margin-top: 3%;" fxLayoutAlign="center center">
+                <mat-icon style="margin-right:10px;">account_circle</mat-icon>Signup !
+            </a>
+        </div>
+    </div>
 
 
 </section>

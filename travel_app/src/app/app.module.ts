@@ -25,6 +25,7 @@ import { ProfileServiceService } from './profile/profile-service.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,6 @@ import { ProfileServiceService } from './profile/profile-service.service';
     PayTripComponent,
     DeleteTripComponent,
     RateTripComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -49,7 +49,8 @@ import { ProfileServiceService } from './profile/profile-service.service';
     FlexLayoutModule,
     NoopAnimationsModule
   ],
-  providers: [TripsServiceService, ProfileServiceService],
+
+  providers: [TripsServiceService, ProfileServiceService,LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

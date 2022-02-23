@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileServiceService } from '../profile/profile-service.service';
 
 
 @Component({
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public ProfileService: ProfileServiceService) { }
 
   ngOnInit(): void {
   }
 
+  profile=this.ProfileService.currentProfile;
 }

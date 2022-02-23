@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ProfileServiceService } from '../profile/profile-service.service';
 import { AddToCardComponent } from './add-to-card/add-to-card.component';
 import { TripsModel, TripsServiceService } from './trips-service.service';
 
@@ -27,7 +28,7 @@ export interface PricesRange {
 export class TripsComponent implements OnInit {
 
 
-  constructor(public TravelData: TripsServiceService, private dialog: MatDialog){
+  constructor(public TravelData: TripsServiceService, private dialog: MatDialog, public ProfileService: ProfileServiceService){
     
   }
 
@@ -50,8 +51,8 @@ export class TripsComponent implements OnInit {
     { value: 6000.00, viewValue1: 5000.00, viewValue2: 6000.00 }
   ]
 
-
-
+  profile=this.ProfileService.currentProfile;
+  
 
 
   ngOnInit(): void {

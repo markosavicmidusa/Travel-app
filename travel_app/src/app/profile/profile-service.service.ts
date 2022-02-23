@@ -11,7 +11,8 @@ export interface ProfileModel {
   phone_number: string,
   address: string,
   favorite_trips: string
-  travel: Array<TripsModel>
+  travel: Array<TripsModel>,
+  isLogedIn: boolean
 
 }
 
@@ -26,11 +27,12 @@ export class ProfileServiceService {
       id: 1,
       name: 'Tina',
       surname: 'Markovic',
-      password: 'tina123',
-      email: 'tinamark@gmail.com',
+      password: 'user1',
+      email: 'user1@gmail.com',
       phone_number: '0658412658',
       address: 'Ruzina 22',
       favorite_trips: 'I love traveling with my family, friends and loved ones.I like the clean mountain air, while in warmer destinations I enjoy the sunny weather and swimming in the sea and visiting various beaches.I have a special memory from each trip.',
+      isLogedIn: true,
       travel: [
         {
           id: 1,
@@ -580,6 +582,7 @@ export class ProfileServiceService {
       phone_number: '0664584751',
       address: 'Kralja Petra 765',
       favorite_trips: 'Through various travels I met a lot of new people.I like to explore new places.I enjoy the kings of the sea, but the mountain is not such a bad option.',
+      isLogedIn: true,
       travel: [
         {
           id: 1,
@@ -704,4 +707,26 @@ export class ProfileServiceService {
 
   }
 
+  /**Login component function*/
+  isUserRegistred(email: string, password: string):any{
+    var user:boolean=false;
+
+    ProfileServiceService.profiles.map(profile => {
+     
+      if(profile.email.toString().includes(email)){
+        console.log('Email is ok')
+        console.log(email)
+        if(profile.password.toString().includes(password)){
+          console.log('PassIsOk')
+          console.log(password)
+          user=true;
+
+        }
+      }
+    
+
+    });
+
+    return user; 
+  }
 }
