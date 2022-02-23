@@ -3,38 +3,49 @@
 -->
 <section fxLayoutAlign="center center" fxLayoutGap="2%" style="margin-top: 1.5%;">
     <p style="font-size: 50pt; color: #ffffff; font-family: 'Dancing Script', cursive;">Signup</p>
-    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutAlign="center center" fxLayout="column" style="padding:5px;background-color: #ffffff; opacity:0.8; border-radius: 5px; height: 80vh; width: 30%; font-size: 10pt;">
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutAlign="center center" fxLayout="column" style="padding:5px;background-color: #ffffff; opacity:0.8; border-radius: 5px; height: 75vh; width: 30%; font-size: 10pt;">
 
         
         <mat-form-field appearance="fill" >
             <mat-label>Forname</mat-label>
-            <input matInput required ngModel name="forname">
+            <input matInput required ngModel name="forname" #forname="ngModel">
+            <mat-error *ngIf="forname.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Surname</mat-label>
-            <input matInput required ngModel name="surname">
+            <input matInput required ngModel name="surname" #surname="ngModel">
+            <mat-error *ngIf="surname.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
-            <input type="email" matInput required ngModel name="email">
+            <input type="email" matInput required ngModel name="email" #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">The field should not be empty</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Enter the correct mail format</mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill" hintLabel="Max 5 characters">
+        <mat-form-field appearance="fill" hintLabel="Max 10 characters">
             <mat-label>Password</mat-label>
-            <input type="password" matInput required #password ngModel name="password">
-            <mat-hint align="end">{{password.value?.length || 0}}/5</mat-hint>
+            <input type="password" matInput required #password="ngModel" ngModel name="password">
+            <mat-hint align="end">{{password.value?.length || 0}}/10</mat-hint>
+            <mat-error *ngIf="password.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Phone number</mat-label>
-            <input matInput required ngModel name="number">
+            <input matInput required ngModel name="number" #phoneNumber="ngModel">
+            <mat-error *ngIf="phoneNumber.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Address</mat-label>
-            <input matInput required ngModel name="address">
+            <input matInput required ngModel name="address" #address="ngModel">
+            <mat-error *ngIf="address.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
-        <mat-checkbox  ngModel name="checkbox" required>
+        <mat-checkbox  ngModel name="checkbox" required #checkbox="ngModel">
             <p> I accept the terms and conditions</p>
         </mat-checkbox>
-        <button type="submit" mat-raised-button color="warn" [disabled]="f.invalid" style="border:2px solid;width: 55%;" > Signup ! </button>
+        <mat-error style="margin-bottom: 2%;" *ngIf="checkbox.hasError('required')">The field should not be empty</mat-error>
+        
+        <button type="submit" mat-raised-button color="warn" [disabled]="f.invalid || passwordLength(password.value?.length)" style="border:2px solid;width: 55%;" > Signup ! </button>
+        <p>or</p>
+        <button type="submit" mat-button style="border:2px solid;width: 30%;margin-top: 1%;"> Go to login ! </button>
     </form>
     
 

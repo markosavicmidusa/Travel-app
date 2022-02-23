@@ -17,4 +17,14 @@ export class SignupComponent implements OnInit {
     console.log(form)
   }
 
+  passwordLength(passwordLength: number){
+    
+    let isPaswordUnvalid = false;
+
+    if(passwordLength > 10){
+      isPaswordUnvalid=true;
+    }
+    return isPaswordUnvalid;
+  }
+
 }

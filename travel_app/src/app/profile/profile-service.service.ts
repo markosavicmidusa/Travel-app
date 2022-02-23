@@ -32,7 +32,7 @@ export class ProfileServiceService {
       phone_number: '0658412658',
       address: 'Ruzina 22',
       favorite_trips: 'I love traveling with my family, friends and loved ones.I like the clean mountain air, while in warmer destinations I enjoy the sunny weather and swimming in the sea and visiting various beaches.I have a special memory from each trip.',
-      isLogedIn: true,
+      isLogedIn: false,
       travel: [
         {
           id: 1,
