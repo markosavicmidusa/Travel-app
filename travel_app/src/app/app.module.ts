@@ -19,6 +19,7 @@ import { AddToCardComponent } from './trips/add-to-card/add-to-card.component';
 import { PayTripComponent } from './profile/my-basket/pay-trip/pay-trip.component';
 import { DeleteTripComponent } from './profile/delete-trip/delete-trip.component';
 import { RateTripComponent } from './profile/finished-trips/rate-trip/rate-trip.component';
+import { ProfileServiceService } from './profile/profile-service.service';
 
 
 
@@ -48,7 +49,7 @@ import { RateTripComponent } from './profile/finished-trips/rate-trip/rate-trip.
     FlexLayoutModule,
     NoopAnimationsModule
   ],
-  providers: [TripsServiceService],
+  providers: [TripsServiceService, ProfileServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
