@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TravelType } from './trips.component';
+
 
 
 export interface TripsModel {
@@ -503,6 +503,8 @@ export class TripsServiceService {
 
     return fastFilteredTrips;
   }
+
+  
 
   currentTravel = TripsServiceService.travels[0];
 
