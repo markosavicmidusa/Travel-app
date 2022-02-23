@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TripsServiceService } from 'src/app/trips/trips-service.service';
 import { DeleteTripComponent } from '../delete-trip/delete-trip.component';
+import { ProfileServiceService } from '../profile-service.service';
 
 @Component({
   selector: 'app-canceled-trips',
@@ -10,7 +11,7 @@ import { DeleteTripComponent } from '../delete-trip/delete-trip.component';
 })
 export class CanceledTripsComponent implements OnInit {
 
-  constructor(public tripsTravel: TripsServiceService, private dialog:MatDialog) { }
+  constructor(public tripsTravel: TripsServiceService, private dialog:MatDialog, public ProfileService: ProfileServiceService) { }
 
   ngOnInit(): void {
   }
@@ -20,5 +21,8 @@ export class CanceledTripsComponent implements OnInit {
     const dialogRef=this.dialog.open(DeleteTripComponent);
 
   }
+
+  canceledTrips=this.ProfileService.getCanceledTravelsFromProfile();
+  
 
 }

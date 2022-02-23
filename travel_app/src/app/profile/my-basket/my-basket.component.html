@@ -3,21 +3,21 @@
 <section style="padding: 1%;">
     <div  id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88); position: -webkit-sticky;position: sticky;top: 0; border-radius: 2px;margin-bottom:2%; background-color: rgb(63, 81, 181);color: white;">
 
-        <h1 fxLayoutAlign="center center">Total value : {{tripsTravel.currentTravel.price}}.00 €</h1>
+        <h1 fxLayoutAlign="center center">Total value : {{sumOfActiveTrips}}.00 €</h1>
 
     </div>
-    <div id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
+    <div *ngFor="let activeTrip of activeTrips" id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
 
-        <img src="../{{tripsTravel.currentTravel.picture_path}}" alt="picture" height="70px" width="70px"
+        <img src="../{{activeTrip.picture_path}}" alt="picture" height="70px" width="70px"
             style="border-radius: 50%;">
-        <h3>{{tripsTravel.currentTravel.destination}} for
-            {{tripsTravel.currentTravel.price}} € </h3>
+        <h3>{{activeTrip.destination}} for
+            {{activeTrip.price}} € </h3>
 
-        <h4>{{tripsTravel.currentTravel.time | date}} in duration of
-            {{tripsTravel.currentTravel.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{tripsTravel.currentTravel.status}}</div>
+        <h4>{{activeTrip.time | date}} in duration of
+            {{activeTrip.duration}} days</h4>
+        <h4> Status: <div style="color:green">{{activeTrip.status}}</div>
         </h4>
-        <h4>Traveling by: {{tripsTravel.currentTravel.travel_type}}</h4>
+        <h4>Traveling by: {{activeTrip.travel_type}}</h4>
 
         <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
             <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
@@ -25,119 +25,5 @@
         </div>
 
     </div>
-    <div id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
-
-        <img src="../{{tripsTravel.currentTravel.picture_path}}" alt="picture" height="70px" width="70px"
-            style="border-radius: 50%;">
-        <h3>{{tripsTravel.currentTravel.destination}} for
-            {{tripsTravel.currentTravel.price}} € </h3>
-
-        <h4>{{tripsTravel.currentTravel.time | date}} in duration of
-            {{tripsTravel.currentTravel.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{tripsTravel.currentTravel.status}}</div>
-        </h4>
-        <h4>Traveling by: {{tripsTravel.currentTravel.travel_type}}</h4>
-
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
-            <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
-            <mat-icon style="color:red;"(click)="deleteTripDialog()">cancel</mat-icon>
-        </div>
-
-    </div>
-    <div id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
-
-        <img src="../{{tripsTravel.currentTravel.picture_path}}" alt="picture" height="70px" width="70px"
-            style="border-radius: 50%;">
-        <h3>{{tripsTravel.currentTravel.destination}} for
-            {{tripsTravel.currentTravel.price}} € </h3>
-
-        <h4>{{tripsTravel.currentTravel.time | date}} in duration of
-            {{tripsTravel.currentTravel.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{tripsTravel.currentTravel.status}}</div>
-        </h4>
-        <h4>Traveling by: {{tripsTravel.currentTravel.travel_type}}</h4>
-
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
-            <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
-            <mat-icon style="color:red;"(click)="deleteTripDialog()">cancel</mat-icon>
-        </div>
-
-    </div>
-    <div id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
-
-        <img src="../{{tripsTravel.currentTravel.picture_path}}" alt="picture" height="70px" width="70px"
-            style="border-radius: 50%;">
-        <h3>{{tripsTravel.currentTravel.destination}} for
-            {{tripsTravel.currentTravel.price}} € </h3>
-
-        <h4>{{tripsTravel.currentTravel.time | date}} in duration of
-            {{tripsTravel.currentTravel.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{tripsTravel.currentTravel.status}}</div>
-        </h4>
-        <h4>Traveling by: {{tripsTravel.currentTravel.travel_type}}</h4>
-
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
-            <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
-            <mat-icon style="color:red;"(click)="deleteTripDialog()">cancel</mat-icon>
-        </div>
-
-    </div>
-    <div id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
-
-        <img src="../{{tripsTravel.currentTravel.picture_path}}" alt="picture" height="70px" width="70px"
-            style="border-radius: 50%;">
-        <h3>{{tripsTravel.currentTravel.destination}} for
-            {{tripsTravel.currentTravel.price}} € </h3>
-
-        <h4>{{tripsTravel.currentTravel.time | date}} in duration of
-            {{tripsTravel.currentTravel.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{tripsTravel.currentTravel.status}}</div>
-        </h4>
-        <h4>Traveling by: {{tripsTravel.currentTravel.travel_type}}</h4>
-
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
-            <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
-            <mat-icon style="color:red;"(click)="deleteTripDialog()">cancel</mat-icon>
-        </div>
-
-    </div>
-    <div id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
-
-        <img src="../{{tripsTravel.currentTravel.picture_path}}" alt="picture" height="70px" width="70px"
-            style="border-radius: 50%;">
-        <h3>{{tripsTravel.currentTravel.destination}} for
-            {{tripsTravel.currentTravel.price}} € </h3>
-
-        <h4>{{tripsTravel.currentTravel.time | date}} in duration of
-            {{tripsTravel.currentTravel.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{tripsTravel.currentTravel.status}}</div>
-        </h4>
-        <h4>Traveling by: {{tripsTravel.currentTravel.travel_type}}</h4>
-
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
-            <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
-            <mat-icon style="color:red;"(click)="deleteTripDialog()">cancel</mat-icon>
-        </div>
-
-    </div>
-    <div id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
-
-        <img src="../{{tripsTravel.currentTravel.picture_path}}" alt="picture" height="70px" width="70px"
-            style="border-radius: 50%;">
-        <h3>{{tripsTravel.currentTravel.destination}} for
-            {{tripsTravel.currentTravel.price}} € </h3>
-
-        <h4>{{tripsTravel.currentTravel.time | date}} in duration of
-            {{tripsTravel.currentTravel.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{tripsTravel.currentTravel.status}}</div>
-        </h4>
-        <h4>Traveling by: {{tripsTravel.currentTravel.travel_type}}</h4>
-
-        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
-            <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
-            <mat-icon style="color:red;"(click)="deleteTripDialog()">cancel</mat-icon>
-        </div>
-
-    </div>
-   
+  
 </section>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TripsServiceService } from 'src/app/trips/trips-service.service';
 import { DeleteTripComponent } from '../delete-trip/delete-trip.component';
+import { ProfileServiceService } from '../profile-service.service';
 import { PayTripComponent } from './pay-trip/pay-trip.component';
 
 @Component({
@@ -11,7 +12,7 @@ import { PayTripComponent } from './pay-trip/pay-trip.component';
 })
 export class MyBasketComponent implements OnInit {
 
-  constructor(public tripsTravel: TripsServiceService, public dialog: MatDialog) { }
+  constructor(public tripsTravel: TripsServiceService, public dialog: MatDialog, public ProfileService: ProfileServiceService) { }
 
   ngOnInit(): void {
   }
@@ -25,5 +26,11 @@ export class MyBasketComponent implements OnInit {
     const dialogRef=this.dialog.open(DeleteTripComponent)
 
   }
+
+
+  activeTrips=this.ProfileService.getActiveTravelsFromProfile();
+  sumOfActiveTrips=this.ProfileService.getTotalSumOfActiveTravels();
+
+
 
 }

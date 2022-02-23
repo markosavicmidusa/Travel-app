@@ -13,17 +13,14 @@
             </div>
             <div *ngIf="!isEditable">
 
-
-
-
-                <h1>Marko Savic</h1>
+                <h1>{{profile.name}} {{profile.surname}}</h1>
                 <h4>Email:</h4>
-                <p>savic.marko90@gmail.com</p>
+                <p>{{profile.email}}</p>
                 <h4>Address:</h4>
-                <p>Volgina 9, Kaludjerica</p>
+                <p>{{profile.address}}</p>
                 <h4>Favorite trips info:</h4>
-                <p>My favorite trips are when I am with my family.We allways have a good time together wherever we are
-                </p>
+                <p>{{profile.favorite_trips}}</p>
+                
             </div>
             <div *ngIf="isEditable">
                 <form action="">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileModel, ProfileServiceService } from './profile-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor( public ProfileService: ProfileServiceService) {
 
+   }
+  
   ngOnInit(): void {
   }
 
   isEditable: boolean = false;
+
+  profile=this.ProfileService.currentProfile;
+
+  
 
 }
