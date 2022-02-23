@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TripsModel } from '../trips/trips-service.service';
 
-
 export interface ProfileModel {
 
   id: number,
@@ -16,14 +15,10 @@ export interface ProfileModel {
 
 }
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileServiceService {
-
-  constructor() { }
 
   static profiles: Array<ProfileModel> = [
 
@@ -207,7 +202,7 @@ export class ProfileServiceService {
           recensents: ['Tina', 'Jovan', 'Mario', 'Nina', 'Marina'],
           recensions: ['Great journey.', 'Great all recommendations!', 'Solid.', 'Nothing special.', 'Fantastic'],
           grade: [7, 10, 5, 2, 9],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -223,7 +218,7 @@ export class ProfileServiceService {
           recensents: ['John', 'Smith', 'Marta', 'Nina', 'Bill'],
           recensions: ['Wonderful!', 'Like that.', 'Interesting.', 'Very interesting.', 'Exciting.'],
           grade: [9, 10, 7, 9, 9],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -239,7 +234,7 @@ export class ProfileServiceService {
           recensents: ['Tijana', 'Zdravko', 'Kris', 'Nadja', 'Mario'],
           recensions: ['Great!', 'Beautiful', 'Like it', 'Good time.', 'Woow.'],
           grade: [9, 10, 7, 9, 10],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -255,7 +250,7 @@ export class ProfileServiceService {
           recensents: ['Petar', 'Patricia', 'John', 'Darko', 'Nadja'],
           recensions: ['Wonderful experience', 'Beautiful beach', 'Wonderful', 'Enchanting', 'Too hot'],
           grade: [9, 10, 10, 9, 7],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -271,7 +266,7 @@ export class ProfileServiceService {
           recensents: ['Persa', 'Milos', 'Jovana', 'Darinka', 'Nada'],
           recensions: ['Like it', 'City ​​on the water', 'Wonderful', 'I do not like', 'Nicely'],
           grade: [9, 10, 10, 9, 7],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -287,7 +282,7 @@ export class ProfileServiceService {
           recensents: ['Tina', 'Jovan', 'Mario', 'Nina', 'Marina'],
           recensions: ['Great.', 'Beautiful city', 'Solid.', 'Nothing special.', 'Fantastic'],
           grade: [7, 10, 5, 2, 9],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -303,7 +298,7 @@ export class ProfileServiceService {
           recensents: ['John', 'Smith', 'Marta', 'Nina', 'Bill'],
           recensions: ['Wonderful!', 'Like that.', 'Interesting.', 'Very interesting.', 'Exciting.'],
           grade: [9, 10, 7, 9, 9],
-          status: 'active',
+          status: 'finished',
         },
         {
           id: 18,
@@ -318,7 +313,7 @@ export class ProfileServiceService {
           recensents: ['Tina', 'Jovan', 'Mario', 'Nina', 'Marina'],
           recensions: ['Great journey.', 'Great all recommendations!', 'Solid.', 'Nothing special.', 'Fantastic'],
           grade: [7, 10, 5, 2, 9],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -334,7 +329,7 @@ export class ProfileServiceService {
           recensents: ['John', 'Smith', 'Marta', 'Nina', 'Bill'],
           recensions: ['Wonderful!', 'Like that.', 'Interesting.', 'Very interesting.', 'Exciting.'],
           grade: [9, 10, 7, 9, 9],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -350,7 +345,7 @@ export class ProfileServiceService {
           recensents: ['Tijana', 'Zdravko', 'Kris', 'Nadja', 'Mario'],
           recensions: ['Great!', 'Beautiful', 'Like it', 'Good time.', 'Woow.'],
           grade: [9, 10, 7, 9, 10],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -366,7 +361,7 @@ export class ProfileServiceService {
           recensents: ['Petar', 'Patricia', 'John', 'Darko', 'Nadja'],
           recensions: ['Wonderful experience', 'Beautiful beach', 'Wonderful', 'Enchanting', 'Too hot'],
           grade: [9, 10, 10, 9, 7],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -382,7 +377,7 @@ export class ProfileServiceService {
           recensents: ['Persa', 'Milos', 'Jovana', 'Darinka', 'Nada'],
           recensions: ['Like it', 'City ​​on the water', 'Wonderful', 'I do not like', 'Nicely'],
           grade: [9, 10, 10, 9, 7],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -398,7 +393,7 @@ export class ProfileServiceService {
           recensents: ['Tina', 'Jovan', 'Mario', 'Nina', 'Marina'],
           recensions: ['Great.', 'Beautiful city', 'Solid.', 'Nothing special.', 'Fantastic'],
           grade: [7, 10, 5, 2, 9],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -414,7 +409,7 @@ export class ProfileServiceService {
           recensents: ['John', 'Smith', 'Marta', 'Nina', 'Bill'],
           recensions: ['Wonderful!', 'Like that.', 'Interesting.', 'Very interesting.', 'Exciting.'],
           grade: [9, 10, 7, 9, 9],
-          status: 'active',
+          status: 'finished',
         },
         {
           id: 25,
@@ -429,7 +424,7 @@ export class ProfileServiceService {
           recensents: ['Petar', 'Patricia', 'John', 'Darko', 'Nadja'],
           recensions: ['Beautiful mountain', 'Good time.', 'Expensive.', 'Nicely', 'Cold'],
           grade: [10, 9, 9, 8, 6],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -445,7 +440,7 @@ export class ProfileServiceService {
           recensents: ['Bill', 'Niki', 'Jovana', 'Kristina', 'Robin'],
           recensions: ['I like it.', 'Hell of heat', 'Enchanting pyramids', 'Good', 'Beautiful'],
           grade: [10, 7, 10, 9, 8],
-          status: 'active',
+          status: 'finished',
         },
         {
           id: 27,
@@ -460,7 +455,7 @@ export class ProfileServiceService {
           recensents: ['Marko', 'Milica', 'John', 'Dr. Smith', 'Nikolas'],
           recensions: ['Wonderful!', 'Like that.', 'Interesting.', 'Very interesting.', 'Exciting.'],
           grade: [9, 7, 8, 9, 7],
-          status: 'active',
+          status: 'canceled',
         },
         {
           id: 28,
@@ -475,7 +470,7 @@ export class ProfileServiceService {
           recensents: ['Tina', 'Jovan', 'Mario', 'Nina', 'Marina'],
           recensions: ['Great journey.', 'Great all recommendations!', 'Solid.', 'Nothing special.', 'Fantastic'],
           grade: [7, 10, 5, 2, 9],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -491,7 +486,7 @@ export class ProfileServiceService {
           recensents: ['John', 'Smith', 'Marta', 'Nina', 'Bill'],
           recensions: ['Wonderful!', 'Like that.', 'Interesting.', 'Very interesting.', 'Exciting.'],
           grade: [9, 10, 7, 9, 9],
-          status: 'active',
+          status: 'canceled',
         },
 
         {
@@ -555,7 +550,7 @@ export class ProfileServiceService {
           recensents: ['Tina', 'Jovan', 'Mario', 'Nina', 'Marina'],
           recensions: ['Great.', 'Beautiful city', 'Solid.', 'Nothing special.', 'Fantastic'],
           grade: [7, 10, 5, 2, 9],
-          status: 'active',
+          status: 'finished',
         },
 
         {
@@ -571,7 +566,7 @@ export class ProfileServiceService {
           recensents: ['John', 'Smith', 'Marta', 'Nina', 'Bill'],
           recensions: ['Wonderful!', 'Like that.', 'Interesting.', 'Very interesting.', 'Exciting.'],
           grade: [9, 10, 7, 9, 9],
-          status: 'active',
+          status: 'finished',
         }
       ]
     },
@@ -667,13 +662,46 @@ export class ProfileServiceService {
       ]
     }
   ];
+  constructor() { }
 
+  currentProfile= ProfileServiceService.profiles[0];
+  getActiveTravelsFromProfile():Array<TripsModel>{
+    var travels: Array<TripsModel>=[];
+    this.currentProfile.travel.map((travel: any)=>{
+      if(travel.status === 'active'){
+        travels.push(travel);
+      }
+    })
+    return travels;
+  }
+  getCanceledTravelsFromProfile():Array<TripsModel>{
+    var travels: Array<TripsModel>=[];
+    this.currentProfile.travel.map((travel: any)=>{
+      if(travel.status === 'canceled'){
+        travels.push(travel);
+      }
+    })
+    return travels;
 
+  }
+  getFinishedTravelsFromProfile():Array<TripsModel>{
+    var travels: Array<TripsModel>=[];
+    this.currentProfile.travel.map((travel: any)=>{
+      if(travel.status === 'finished'){
+        travels.push(travel);
+      }
+    })
+    return travels;
 
-  currentProfile: ProfileModel= ProfileServiceService.profiles[0];
+  }
+  getTotalSumOfActiveTravels():number{
 
+    var sum=0;
+    this.currentProfile.travel.map((travel: any)=>{
+      sum+=travel.price;
+    })
+    return sum;
 
-
-
+  }
 
 }
