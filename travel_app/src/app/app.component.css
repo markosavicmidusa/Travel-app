@@ -4,6 +4,12 @@
     background-size: "100%" ;  
     background-size: cover; 
 }
+
+.logo{
+    font-size: 20pt;
+    font-weight: bold;
+}
+
 a{
     text-decoration: none;
     color: azure;
@@ -20,6 +26,11 @@ mat-list-item {
     font-family: 'Dancing Script', cursive;
     height: 50px;
 
+}
+
+.warning{
+   color:red;
+   font-weight: bold;
 }
 
 @media only screen and (max-width: 500px) {

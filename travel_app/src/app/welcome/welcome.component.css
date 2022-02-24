@@ -1,3 +1,28 @@
+mat-icon{
+
+    margin-right:10px; 
+}
+
+.welcomeTitle{
+
+    font-size: 40pt; 
+    font-weight: bold; 
+    color:#ffffff;
+
+}
+.welcomeSubtitle{
+
+    font-size: 18pt;
+    font-family: 'Dancing Script', cursive;
+    color:#ffffff;
+
+}
+.container{
+
+    background-color:none;
+    margin-top: 5%;
+}
+
 .buttons{
 
     height:50px;

@@ -1,24 +1,23 @@
 <section fxLayoutAlign="center center">
 
-    <div action="/trips" fxFlex="70%" fxLayout="column" fxLayoutGap="30px"
-        style="background-color:none; margin-top: 5%;">
+    <div class="container" action="/trips" fxFlex="70%" fxLayout="column" fxLayoutGap="30px">
 
         <header>
-            <p fxLayoutAlign="center" style="font-size: 40pt; font-weight: bold; color:#ffffff">Welcome to travel agency
+            <p class="welcomeTitle" fxLayoutAlign="center" >Welcome to travel agency
             </p>
-            <p fxLayoutAlign="center" style="font-size: 18pt; font-family: 'Dancing Script', cursive;color:#ffffff">
+            <p class="welcomeSubtitle" fxLayoutAlign="center">
                 Where travel becomes an unforgetable advanture</p>
         </header>
         <div fxLayout="column" fxLayoutAlign="center center">
             <a class=" button1" *ngIf="profile.isLogedIn" routerLink="/trips" mat-raised-button color="primary" fxLayoutAlign="center center">
-                <mat-icon style="margin-right:10px;">search</mat-icon>Find your travel
+                <mat-icon>search</mat-icon>Find your travel
             </a>
             <a class="buttons" *ngIf="!profile.isLogedIn" routerLink="/login" mat-raised-button color="primary"  fxLayoutAlign="center center">
-                <mat-icon style="margin-right:10px;">login</mat-icon>Login !
+                <mat-icon>login</mat-icon>Login !
             </a>
             <a class="buttons" *ngIf="!profile.isLogedIn" routerLink="/signup" mat-raised-button color="primary"
                 fxLayoutAlign="center center">
-                <mat-icon style="margin-right:10px;">account_circle</mat-icon>Signup !
+                <mat-icon>account_circle</mat-icon>Signup !
             </a>
         </div>
     </div>

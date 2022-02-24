@@ -20,8 +20,11 @@ import { PayTripComponent } from './profile/my-basket/pay-trip/pay-trip.componen
 import { DeleteTripComponent } from './profile/delete-trip/delete-trip.component';
 import { RateTripComponent } from './profile/finished-trips/rate-trip/rate-trip.component';
 import { ProfileServiceService } from './profile/profile-service.service';
-
-
+/**Firebase-> Forestore */
+import {AngularFireModule } from '@angular/fire/compat';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database'
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 
 
 
@@ -47,7 +50,10 @@ import { ProfileServiceService } from './profile/profile-service.service';
     MaterialModule,
     RoutingModule,
     FlexLayoutModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
 
   providers: [TripsServiceService, ProfileServiceService,LoginComponent],

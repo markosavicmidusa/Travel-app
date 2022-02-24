@@ -1,13 +1,11 @@
 <section *ngIf="profile.isLogedIn" fxLayoutAlign="center center" fxLayoutGap="2%" style=" height:87%;margin:1%">
 
-    <div fxLayout="row"
-        style="height:100%;width: 75%; padding:10px;background-color: #ffffff; opacity:0.8; border-radius: 5px; font-size: 10pt;">
+    <div class="container" fxLayout="row">
 
         <div id="profile" fxLayoutAlign="center start" fxLayout="column" fxLayoutGap="5px">
 
             <div style="width:65%;height: 15vh; display:flex;" fxLayout="row" fxLayoutGap="5px">
-                <img mat-card-image src="../../assets/images/profile.png" alt="Photo"
-                    style="border-radius:50px;height:90%;width:30%;flex:2;">
+                <img fxHide.xs fxHide.sm class="image" mat-card-image src="../../assets/images/profile.png" alt="Photo">
                 <mat-icon style="flex:1;font-size: 20pt;cursor: pointer;" (click)="isEditable=!isEditable;">edit
                 </mat-icon>
             </div>
@@ -89,6 +87,6 @@
 
 
     </div>
-    <p style="font-size: 50pt; color: #ffffff; font-family: 'Dancing Script', cursive;">Profile</p>
+    <p fxHide.xs  fxHide.sm  fxHide.md style="font-size: 50pt; color: #ffffff; font-family: 'Dancing Script', cursive;">Profile</p>
 
 </section>

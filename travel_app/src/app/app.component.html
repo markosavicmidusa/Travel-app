@@ -1,6 +1,6 @@
 <mat-sidenav-container>
 
-  <mat-sidenav [opened]="true" #sidenav >
+  <mat-sidenav [opened]="true" #sidenav>
 
     <section fxLayout="column" fxLayoutAlign="start">
       <mat-list role="list" fxLayoutGap="15px">
@@ -36,47 +36,48 @@
 
 
   </mat-sidenav>
-  <mat-sidenav-content >
+  <mat-sidenav-content>
 
     <div id="background" style="height: 93.4% ;">
-      <mat-toolbar color="primary" fxLayoutGap="10px" >
+      <mat-toolbar color="primary" fxLayoutGap="10px">
 
-      <button mat-raised-button color="accent" (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>
-        <a routerLink="" style="font-size: 20pt; font-weight: bold;">Travel App</a>
-      </span>
+        <button mat-raised-button color="accent" (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>
+          <a class="logo" routerLink="">Travel App</a>
+        </span>
 
 
-      <span fxFlex fxLayoutAlign="end" fxLayoutGap="2%" fxHide.xs fxHide.sm>
+        <span fxFlex fxLayoutAlign="end" fxLayoutGap="2%" fxHide.xs fxHide.sm>
 
-        <a routerLink="">Welcome</a>
-        <a routerLink="/trips">Trips</a>
-        <a routerLink="/signup">Signup</a>
-        <a routerLink="/login">Login</a>
-        <a *ngIf="profile.isLogedIn" routerLink="/profile">Profile</a>
-        <a *ngIf="profile.isLogedIn" routerLink="/logout">Logout</a>
+          <a routerLink="">Welcome</a>
+          <a routerLink="/trips">Trips</a>
+          <a routerLink="/signup">Signup</a>
+          <a routerLink="/login">Login</a>
+          <a *ngIf="profile.isLogedIn" routerLink="/profile">Profile</a>
+          <a *ngIf="profile.isLogedIn" routerLink="/logout">Logout</a>
 
-      </span>
-    
+        </span>
 
-    </mat-toolbar>
-    
-      <p fxLayoutAlign="center center" fxLayout="row" style="color:red; font-weight: bold;" *ngIf="!profile.isLogedIn" >(To proceed, you need to signup or login first)
+
+      </mat-toolbar>
+
+      <p class="warning" fxLayoutAlign="center center" fxLayout="row" *ngIf="!profile.isLogedIn">(To proceed, you need
+        to signup or login first)
       </p>
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
-    
+
 
     <div>
-      <mat-toolbar id="firm" color="primary" fxLayoutAlign="center center" >
+      <mat-toolbar id="firm" color="primary" fxLayoutAlign="center center">
 
         Midusa software development studio
-      
+
       </mat-toolbar>
     </div>
-    
+
 
   </mat-sidenav-content>
 

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TripsModel } from '../trips/trips-service.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 export interface ProfileModel {
 
-  id: number,
+  
   name: string,
   surname: string,
   password: string,
@@ -21,10 +22,13 @@ export interface ProfileModel {
 })
 export class ProfileServiceService {
 
+
+
+
   static profiles: Array<ProfileModel> = [
 
     {
-      id: 1,
+      
       name: 'Tina',
       surname: 'Markovic',
       password: 'user1',
@@ -574,7 +578,6 @@ export class ProfileServiceService {
     },
 
     {
-      id: 2,
       name: 'Nikola',
       surname: 'Nikolic',
       password: 'sifra987',
@@ -665,7 +668,19 @@ export class ProfileServiceService {
       ]
     }
   ];
-  constructor() { }
+  constructor(private fireservice:AngularFirestore) { }
+
+  /**FireStoreCrudOperations on Profile */
+
+  createNewProfile(Profile: ProfileModel){
+
+    return this.fireservice.collection('Profile').add(Profile);
+
+  }
+
+
+
+
 
   currentProfile= ProfileServiceService.profiles[0];
   getActiveTravelsFromProfile():Array<TripsModel>{

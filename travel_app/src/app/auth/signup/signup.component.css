@@ -1,3 +1,52 @@
 mat-form-field{
     width: 100%;
 }
+.goToLogin{
+
+    border:2px solid;
+    width: 30%;
+    margin-top: 1%;
+}
+
+.signup{
+    border:2px solid;
+    width: 55%;
+}
+
+.form{
+    padding:5px;
+    background-color: #ffffff;
+    opacity:0.8;
+    border-radius: 5px;
+    height: 75vh;
+    width: 30%;
+    font-size: 10pt;
+}
+.signupTitle{
+
+    font-size: 50pt;
+    color: #ffffff;
+    font-family: 'Dancing Script', cursive;
+
+}
+
+@media only screen and (max-width: 1125px) {
+ 
+    .goToLogin{
+        width: 10vh;
+    }
+    .signup{
+        width: 15vh; 
+    }
+  }
+
+  @media only screen and (max-width: 940px) {
+ 
+    .form{
+
+        width: 30vh;
+    }
+  }
+
+ 
+

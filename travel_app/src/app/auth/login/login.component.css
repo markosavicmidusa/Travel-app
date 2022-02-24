@@ -1,3 +1,37 @@
+form{
+
+    padding:20px;
+    background-color: #ffffff;
+    opacity:0.8;
+    margin-top: 8%;
+    border-radius: 5px;
+    height:300px;
+    width:40vh;
+}
+
 mat-form-field{
     width: 100%;
 }
+
+.loginTitle{
+
+    font-size: 50pt;
+    color: #ffffff;
+    font-family: 'Dancing Script', cursive;
+
+}
+
+.goToSignUp{
+
+    border:2px solid;
+    width: 15vh;
+    margin-top: 1%;
+}
+
+.submitButton{
+
+    border:2px solid;
+    width: 55%;
+    margin-top:3%;
+}
+

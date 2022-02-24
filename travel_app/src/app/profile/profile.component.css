@@ -45,3 +45,30 @@ p{
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000; 
   }
+
+  .container{
+
+    height:100%;
+    width: 75%;
+    padding:10px;
+    background-color: #ffffff;
+    opacity:0.8;
+    border-radius: 5px;
+    font-size: 10pt;
+
+  }
+  .image{
+    border-radius:50px;
+    height:60%;
+    width:30%;
+    flex:2;
+  }
+
+  @media only screen and (max-width: 1067px) {
+ 
+    .container{
+        width: 100vh;
+    }
+    
+  }
+ 

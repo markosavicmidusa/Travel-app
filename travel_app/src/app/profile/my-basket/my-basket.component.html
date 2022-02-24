@@ -1,12 +1,12 @@
 <h1 fxLayoutAlign="center center">My trip basket</h1>
 
 <section style="padding: 1%;">
-    <div  id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88); position: -webkit-sticky;position: sticky;top: 0; border-radius: 2px;margin-bottom:2%; background-color: rgb(63, 81, 181);color: white;">
+    <div id="tripSum" fxLayout="row" fxLayoutGap="5%" >
 
         <h1 fxLayoutAlign="center center">Total value : {{sumOfActiveTrips}}.00 €</h1>
 
     </div>
-    <div *ngFor="let activeTrip of activeTrips" id="trip" fxLayout="row" fxLayoutGap="5%" style="padding: 2%;border-bottom: 0.5px solid rgb(88, 88, 88);">
+    <div *ngFor="let activeTrip of activeTrips" id="trip" fxLayout="row" fxLayoutGap="5%" >
 
         <img src="../{{activeTrip.picture_path}}" alt="picture" height="70px" width="70px"
             style="border-radius: 50%;">
@@ -15,9 +15,9 @@
 
         <h4>{{activeTrip.time | date}} in duration of
             {{activeTrip.duration}} days</h4>
-        <h4> Status: <div style="color:green">{{activeTrip.status}}</div>
+        <h4 fxHide.xs  fxHide.sm  fxHide.md> Status: <div style="color:green">{{activeTrip.status}}</div>
         </h4>
-        <h4>Traveling by: {{activeTrip.travel_type}}</h4>
+        <h4 fxHide.xs  fxHide.sm  fxHide.md>Traveling by: {{activeTrip.travel_type}}</h4>
 
         <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
             <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>

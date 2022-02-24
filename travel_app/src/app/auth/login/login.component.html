@@ -1,7 +1,7 @@
 <section fxLayoutAlign="center center" fxLayoutGap="2%" style="margin-top: 10%;">
-    <p style="font-size: 50pt; color: #ffffff; font-family: 'Dancing Script', cursive;">Login</p>
+    <p class="loginTitle" fxHide.xs  fxHide.sm >Login</p>
     
-    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutAlign="center center" fxLayout="column" style="padding:20px;background-color: #ffffff; opacity:0.8;margin-top: 8% ; border-radius: 5px;height:300px" fxFlex="30%">
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutAlign="center center" fxLayout="column" >
        
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
@@ -15,8 +15,8 @@
             <mat-hint align="end">{{password.value?.length || 0}}/10</mat-hint>
             <mat-error *ngIf="password.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
-        <button type="submit" [disabled]="f.invalid || passwordLength(password.value?.length) " mat-raised-button color="primary" style="border:2px solid;width: 55%;margin-top:3%"> Login ! </button>
+        <button class="submitButton" type="submit" [disabled]="f.invalid || passwordLength(password.value?.length) " mat-raised-button color="primary" > Login ! </button>
         <i>or</i>
-        <button type="submit" mat-button style="border:2px solid;width: 30%;margin-top: 1%;"> Go to signup ! </button>
+        <button type="submit" mat-button class="goToSignUp"> Go to signup ! </button>
     </form>
 </section>
