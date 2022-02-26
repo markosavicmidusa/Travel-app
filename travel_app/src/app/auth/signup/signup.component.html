@@ -1,9 +1,9 @@
 <section fxLayoutAlign="center center" fxLayoutGap="2%" style="margin-top: 1.5%;">
-    <p class="signupTitle" fxHide.xs fxHide.sm >Signup</p>
+    <p class="signupTitle" fxHide.xs fxHide.sm>Signup</p>
     <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutAlign="center center" fxLayout="column">
 
-        
-        <mat-form-field appearance="fill" >
+
+        <mat-form-field appearance="fill">
             <mat-label>Forname</mat-label>
             <input matInput required ngModel name="forname" #forname="ngModel">
             <mat-error *ngIf="forname.hasError('required')">The field should not be empty</mat-error>
@@ -35,17 +35,21 @@
             <input matInput required ngModel name="address" #address="ngModel">
             <mat-error *ngIf="address.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
-        <mat-checkbox  ngModel name="checkbox" required #checkbox="ngModel">
+        <mat-form-field appearance="fill">
+            <mat-label>Favorite trips info</mat-label>
+            <textarea matInput required placeholder="Ex. It makes me feel..." ngModel name="favorite_trips_info"></textarea>
+        </mat-form-field>
+        <mat-checkbox ngModel name="checkbox" required #checkbox="ngModel">
             <p class="termsConditions"> I accept the terms and conditions</p>
         </mat-checkbox>
-        <mat-error style="margin-bottom: 2%;" *ngIf="checkbox.hasError('required')">The field should not be empty</mat-error>
-        
-        <button class="signup" type="submit" mat-raised-button color="warn" [disabled]="f.invalid || passwordLength(password.value?.length)"> Signup ! </button>
-        <p>or</p>
-        <button class="goToLogin" type="submit" mat-button> Go to login ! </button>
-        <p style="color:green;">{{ messageGood }}</p>
+        <mat-error style="margin-bottom: 2%;" *ngIf="checkbox.hasError('required')">The field should not be empty
+        </mat-error>
+
+        <button class="signup" type="submit" mat-raised-button color="warn"
+            [disabled]="f.invalid || passwordLength(password.value?.length)"> Signup ! </button>
+        <button class="goToLogin" (click)="goToLogin()" type="submit" mat-button> Go to login ! </button>
         <p style="color:red;">{{ messageError }}</p>
     </form>
-    
+
 
 </section>
