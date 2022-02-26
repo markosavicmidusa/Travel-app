@@ -9,13 +9,13 @@
                 Where travel becomes an unforgetable advanture</p>
         </header>
         <div fxLayout="column" fxLayoutAlign="center center">
-            <a class=" button1" *ngIf="profile.isLogedIn" routerLink="/trips" mat-raised-button color="primary" fxLayoutAlign="center center">
+            <a class=" button1" *ngIf="userStatus" routerLink="/trips" mat-raised-button color="primary" fxLayoutAlign="center center">
                 <mat-icon>search</mat-icon>Find your travel
             </a>
-            <a class="buttons" *ngIf="!profile.isLogedIn" routerLink="/login" mat-raised-button color="primary"  fxLayoutAlign="center center">
+            <a class="buttons" *ngIf="!userStatus" routerLink="/login" mat-raised-button color="primary"  fxLayoutAlign="center center">
                 <mat-icon>login</mat-icon>Login !
             </a>
-            <a class="buttons" *ngIf="!profile.isLogedIn" routerLink="/signup" mat-raised-button color="primary"
+            <a class="buttons" *ngIf="!userStatus" routerLink="/signup" mat-raised-button color="primary"
                 fxLayoutAlign="center center">
                 <mat-icon>account_circle</mat-icon>Signup !
             </a>

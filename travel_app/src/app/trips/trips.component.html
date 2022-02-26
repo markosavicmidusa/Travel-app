@@ -61,7 +61,7 @@
                         </p>
                     </mat-card-content>
                     <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
-                        <button [disabled]="!profile.isLogedIn" mat-raised-button (click)="openReservationDialog(travel.id)" color="warn">Add to card</button>
+                        <button [disabled]="!userStatus" mat-raised-button (click)="openReservationDialog(travel.id)" color="warn">Add to card</button>
                       
                     </mat-card-actions>
                 </mat-card>
