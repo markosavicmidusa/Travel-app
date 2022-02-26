@@ -16,7 +16,7 @@
             <mat-error *ngIf="password.hasError('required')">The field should not be empty</mat-error>
         </mat-form-field>
         <button class="submitButton" type="submit" [disabled]="f.invalid || passwordLength(password.value?.length) " mat-raised-button color="primary" > Login ! </button>
-        <i>or</i>
-        <button type="submit" mat-button class="goToSignUp"> Go to signup ! </button>
+        <button  (click)="goToSignUp()" mat-button class="goToSignUp"> Go to signup ! </button>
+        <i style="color:red;">{{ messageError }}</i>
     </form>
 </section>
