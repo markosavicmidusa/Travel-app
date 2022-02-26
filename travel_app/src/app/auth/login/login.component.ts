@@ -9,26 +9,22 @@ import { Router, RouterModule, Routes } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-
-  user: boolean=false;
-
   constructor(public ProfileService: ProfileServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form: NgForm){
-    console.log(form.value.email);
-    console.log(form.value.password);
+  userStatus: boolean=this.ProfileService.currentUserStatus;
 
-    /*this.user = this.ProfileService.isUserRegistred(form.value.email, form.value.password);
-*/
-    /*if(this.user === false){
+  messageError:string='';
 
-        this.router.navigate(['/signup']);
-
-    }*/
-
+  async onSubmit(form: NgForm){
+  
+   await this.ProfileService.logTheCurrentUser(form.value.email, form.value.password ).then(res=>{
+    this.router.navigate(['/trips'])
+  }).catch(error => {
+    this.messageError= 'Profile has not been added :( Please try again. '
+  });
 
   }
   passwordLength(passwordLength: number){
@@ -39,6 +35,10 @@ export class LoginComponent implements OnInit {
       isPaswordUnvalid=true;
     }
     return isPaswordUnvalid;
+  }
+
+  goToSignUp(){
+    this.router.navigate(['/signup']);
   }
 
   
