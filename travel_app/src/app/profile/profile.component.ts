@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   isEditable: boolean = false;
 
-  profile=this.ProfileService.currentProfile;
-  /*user:boolean=this.LoginComponent1.user;*/
+  userStatus: boolean=this.ProfileService.currentUserStatus;
+  profile=this.ProfileService.currentUser;
   
 }

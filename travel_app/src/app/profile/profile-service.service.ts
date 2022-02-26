@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { TripsModel } from '../trips/trips-service.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { collection, getDocs } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore";
 
 export interface ProfileModel {
 
-  
+
   name: string,
   surname: string,
   password: string,
@@ -22,13 +25,12 @@ export interface ProfileModel {
 })
 export class ProfileServiceService {
 
-
-
+  db = getFirestore();
 
   static profiles: Array<ProfileModel> = [
 
     {
-      
+
       name: 'Tina',
       surname: 'Markovic',
       password: 'user1',
@@ -668,80 +670,134 @@ export class ProfileServiceService {
       ]
     }
   ];
-  constructor(private fireservice:AngularFirestore) { }
+  constructor(private fireservice: AngularFirestore) {
+
+  }
+
+  ngOnInit() {
+
+
+  }
+
+
+
+
 
   /**FireStoreCrudOperations on Profile */
 
-  createNewProfile(Profile: ProfileModel){
+  currentUser: ProfileModel=ProfileServiceService.profiles[0];
+  currentUserStatus: boolean = false;
+
+
+  createNewProfile(Profile: ProfileModel) {
+    this.currentUser=Profile;
+    this.currentUserStatus=true;
+    console.log(this.currentUser)
+    console.log(this.currentUserStatus)
 
     return this.fireservice.collection('Profile').add(Profile);
 
   }
 
+  async getAllProfiles() {
 
+    const querySnapshot = await getDocs(collection(this.db, 'Profile'));
 
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data()['email']);
+      console.log(`${doc.id} => ${doc.data()}`);
+    });
 
+  }
 
-  currentProfile= ProfileServiceService.profiles[0];
-  getActiveTravelsFromProfile():Array<TripsModel>{
-    var travels: Array<TripsModel>=[];
-    this.currentProfile.travel.map((travel: any)=>{
-      if(travel.status === 'active'){
+  /**Da bi prosla greska u slucaju undefined */
+  
+  async logTheCurrentUser(email: string, password: string) {
+
+    const querySnapshot = await getDocs(collection(this.db, "Profile"));
+    querySnapshot.forEach((doc) => {
+      if (doc.data()['email'] === email && doc.data()['password'] === password) {
+        this.currentUser = {
+          name: doc.data()['name'],
+          surname: doc.data()['surname'],
+          password: doc.data()['password'],
+          email: doc.data()['email'],
+          phone_number: doc.data()['phone_number'],
+          address: doc.data()['address'],
+          favorite_trips: doc.data()['favorite_trips'],
+          travel:  doc.data()['travel'] ,
+          isLogedIn: true
+        }
+        this.currentUserStatus=true;
+        console.log(`${doc.id} => ${doc.data()}`);
+      }
+
+    });
+  }
+
+  currentProfile = ProfileServiceService.profiles[0];
+  getActiveTravelsFromProfile(): Array<TripsModel> {
+    var travels: Array<TripsModel> = [];
+    this.currentProfile.travel.map((travel: any) => {
+      if (travel.status === 'active') {
         travels.push(travel);
       }
     })
     return travels;
   }
-  getCanceledTravelsFromProfile():Array<TripsModel>{
-    var travels: Array<TripsModel>=[];
-    this.currentProfile.travel.map((travel: any)=>{
-      if(travel.status === 'canceled'){
+
+  getCanceledTravelsFromProfile(): Array<TripsModel> {
+    var travels: Array<TripsModel> = [];
+    this.currentProfile.travel.map((travel: any) => {
+      if (travel.status === 'canceled') {
         travels.push(travel);
       }
     })
     return travels;
 
   }
-  getFinishedTravelsFromProfile():Array<TripsModel>{
-    var travels: Array<TripsModel>=[];
-    this.currentProfile.travel.map((travel: any)=>{
-      if(travel.status === 'finished'){
+
+  getFinishedTravelsFromProfile(): Array<TripsModel> {
+    var travels: Array<TripsModel> = [];
+    this.currentProfile.travel.map((travel: any) => {
+      if (travel.status === 'finished') {
         travels.push(travel);
       }
     })
     return travels;
 
   }
-  getTotalSumOfActiveTravels():number{
 
-    var sum=0;
-    this.currentProfile.travel.map((travel: any)=>{
-      sum+=travel.price;
+  getTotalSumOfActiveTravels(): number {
+
+    var sum = 0;
+    this.currentProfile.travel.map((travel: any) => {
+      sum += travel.price;
     })
     return sum;
 
   }
 
   /**Login component function*/
-  isUserRegistred(email: string, password: string):any{
-    var user:boolean=false;
+  isUserRegistred(email: string, password: string): any {
+    var user: boolean = false;
 
     ProfileServiceService.profiles.map(profile => {
-     
-      if(profile.email.toString().includes(email)){
+
+      if (profile.email.toString().includes(email)) {
         console.log('Email is ok')
         console.log(email)
-        if(profile.password.toString().includes(password)){
+        if (profile.password.toString().includes(password)) {
           console.log('PassIsOk')
           console.log(password)
-          user=true;
+          user = true;
 
         }
       }
-    
+
 
     });
 
-    return user; 
+    return user;
   }
 }

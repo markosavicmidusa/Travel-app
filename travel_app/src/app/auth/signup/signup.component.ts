@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProfileServiceService } from 'src/app/profile/profile-service.service';
 import { ProfileModel } from 'src/app/profile/profile-service.service';
+import {Router} from "@angular/router"
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -9,14 +10,14 @@ import { ProfileModel } from 'src/app/profile/profile-service.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private ProfileService: ProfileServiceService) { }
+  constructor(private ProfileService: ProfileServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  messageGood:string='';
+  
   messageError:string='';
-  onSubmit(form : NgForm){
+  async onSubmit(form : NgForm){
     console.log(form)
     /**Kod za upis podataka u bazu */
     let profile: ProfileModel = {
@@ -26,14 +27,14 @@ export class SignupComponent implements OnInit {
       email: form.value.email,
       phone_number: form.value.number,
       address: form.value.address,
-      favorite_trips: 'informations',
+      favorite_trips: form.value.favorite_trips_info,
       travel: [],
       isLogedIn: true
     }
 
-    this.ProfileService.createNewProfile(profile).then(res=>{
+   await this.ProfileService.createNewProfile(profile).then(res=>{
       console.log(res);
-      this.messageGood= 'Profile has been added'
+      this.router.navigate(['/trips'])
     }).catch(error => {
       console.log(error);
       this.messageError= 'Profile has not been added :( Please try again. '
@@ -41,6 +42,11 @@ export class SignupComponent implements OnInit {
 
 
   }
+
+  goToLogin(){
+    this.router.navigate(['/login']);
+  }
+
 
   passwordLength(passwordLength: number){
     
@@ -51,5 +57,7 @@ export class SignupComponent implements OnInit {
     }
     return isPaswordUnvalid;
   }
+
+
 
 }

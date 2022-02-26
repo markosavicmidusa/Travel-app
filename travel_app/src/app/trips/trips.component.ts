@@ -51,7 +51,7 @@ export class TripsComponent implements OnInit {
     { value: 6000.00, viewValue1: 5000.00, viewValue2: 6000.00 }
   ]
 
-  profile=this.ProfileService.currentProfile;
+  userStatus: boolean=this.ProfileService.currentUserStatus;
   
 
 

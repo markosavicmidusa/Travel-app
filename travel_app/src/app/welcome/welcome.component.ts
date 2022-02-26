@@ -14,5 +14,5 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  profile=this.ProfileService.currentProfile;
+  userStatus: boolean=this.ProfileService.currentUserStatus;
 }
