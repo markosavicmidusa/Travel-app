@@ -24,7 +24,8 @@ import { ProfileServiceService } from './profile/profile-service.service';
 import {AngularFireModule } from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database'
 import { environment } from 'src/environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { CancelTripComponent } from './profile/my-basket/cancel-trip/cancel-trip.component'
 
 
 
@@ -43,7 +44,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
     AddToCardComponent,
     PayTripComponent,
     DeleteTripComponent,
-    RateTripComponent
+    RateTripComponent,
+    CancelTripComponent
   ],
   imports: [
     BrowserModule,

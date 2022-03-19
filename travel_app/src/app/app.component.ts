@@ -12,8 +12,19 @@ export class AppComponent {
 
   constructor(public ProfileService: ProfileServiceService){}
   sideNavIsOpen = true;
+  
+  ngOnInit(){
 
-  profile=this.ProfileService.currentProfile;
+  }
+  
+  userStatus:boolean = this.ProfileService.currentUserStatus;
 
+  
+  logout(){
+
+    console.log('Usli u logout');
+    this.ProfileService.setUserStateToFalse();
+    
+  }
 
 }

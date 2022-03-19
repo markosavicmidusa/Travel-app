@@ -8,20 +8,20 @@
     </div>
     <div *ngFor="let activeTrip of activeTrips" id="trip" fxLayout="row" fxLayoutGap="5%" >
 
-        <img src="../{{activeTrip.picture_path}}" alt="picture" height="70px" width="70px"
+        <img src="../{{activeTrip.travels.picture_path}}" alt="picture" height="70px" width="70px"
             style="border-radius: 50%;">
-        <h3>{{activeTrip.destination}} for
-            {{activeTrip.price}} € </h3>
+        <h3>{{activeTrip.travels.destination}} for
+            {{activeTrip.travels.price}} € </h3>
 
-        <h4>{{activeTrip.time | date}} in duration of
-            {{activeTrip.duration}} days</h4>
+        <h4>{{activeTrip.travels.time.getDate }} in duration of
+            {{activeTrip.travels.duration}} days</h4>
         <h4 fxHide.xs  fxHide.sm  fxHide.md> Status: <div style="color:green">{{activeTrip.status}}</div>
         </h4>
-        <h4 fxHide.xs  fxHide.sm  fxHide.md>Traveling by: {{activeTrip.travel_type}}</h4>
+        <h4 fxHide.xs  fxHide.sm  fxHide.md>Traveling by: {{activeTrip.travels.travel_type}}</h4>
 
         <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15%">
-            <mat-icon style="color:green;" (click)="openPaymentDialog()"> check_circle</mat-icon>
-            <mat-icon style="color:red;"(click)="deleteTripDialog()">cancel</mat-icon>
+            <mat-icon style="color:green;" (click)="openPaymentDialog(activeTrip.id)"> check_circle</mat-icon>
+            <mat-icon style="color:red;"(click)="cancelTripDialog(activeTrip.id)">cancel</mat-icon>
         </div>
 
     </div>

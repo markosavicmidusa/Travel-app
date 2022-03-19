@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
 
    await this.ProfileService.createNewProfile(profile).then(res=>{
       console.log(res);
-      this.router.navigate(['/trips'])
+      this.router.navigate(['/login'])
     }).catch(error => {
       console.log(error);
       this.messageError= 'Profile has not been added :( Please try again. '

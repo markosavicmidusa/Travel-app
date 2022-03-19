@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProfileServiceService } from '../profile-service.service';
 
 @Component({
   selector: 'app-delete-trip',
@@ -8,11 +9,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DeleteTripComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) private recievedData: any, private ProfileService: ProfileServiceService) { }
 
   ngOnInit(): void {
   }
 
+  deleteTrip(){
+    this.ProfileService.deleteTripInProfileTrips(this.recievedData.id);
+  }
   
 
 }

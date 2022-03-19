@@ -17,9 +17,13 @@ export class FinishedTripsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteTripDialog(){
+  deleteTripDialog(finishedTripId: any){
 
-    const dialogRef=this.dialog.open(DeleteTripComponent);
+    const dialogRef=this.dialog.open(DeleteTripComponent,{
+      data:{
+        id: finishedTripId
+      }
+    });
 
   }
   rateTrip(){

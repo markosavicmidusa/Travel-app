@@ -20,13 +20,15 @@
           <mat-icon>how_to_reg</mat-icon>
           <p>Signup</p>
         </mat-list-item>
-        <mat-list-item *ngIf="profile.isLogedIn" role="listitem" routerLink="/profile" (click)="sidenav.close()">
+        <mat-list-item  role="listitem" routerLink="/profile" (click)="sidenav.close()">
           <mat-icon>person</mat-icon>
           <p>Profile</p>
         </mat-list-item>
-        <mat-list-item *ngIf="profile.isLogedIn" role="listitem" (click)="sidenav.close()">
-          <mat-icon>logout</mat-icon>
-          <p>Logout</p>
+        <mat-list-item   role="listitem" (click)="logout()">
+         <button mat-raised-button color="warn">
+           <mat-icon>logout</mat-icon>
+           Logout
+          </button>
         </mat-list-item>
 
       </mat-list>
@@ -55,17 +57,14 @@
           <a routerLink="/trips">Trips</a>
           <a routerLink="/signup">Signup</a>
           <a routerLink="/login">Login</a>
-          <a *ngIf="profile.isLogedIn" routerLink="/profile">Profile</a>
-          <a *ngIf="profile.isLogedIn" routerLink="/logout">Logout</a>
+          <a  routerLink="/profile">Profile</a>
+          <button mat-raised-button  (click)="logout()" color="warn">Logout</button>
 
         </span>
 
 
       </mat-toolbar>
 
-      <p class="warning" fxLayoutAlign="center center" fxLayout="row" *ngIf="!profile.isLogedIn">(To proceed, you need
-        to signup or login first)
-      </p>
       <router-outlet></router-outlet>
     </div>
 

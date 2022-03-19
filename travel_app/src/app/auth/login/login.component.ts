@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  userStatus: boolean=this.ProfileService.currentUserStatus;
+  userStatus: boolean=this.ProfileService.currentUser.isLogedIn;
 
   messageError:string='';
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
    await this.ProfileService.logTheCurrentUser(form.value.email, form.value.password ).then(res=>{
     this.router.navigate(['/trips'])
   }).catch(error => {
-    this.messageError= 'Profile has not been added :( Please try again. '
+    this.messageError= 'Profile has not been read :( Please try again. '
   });
 
   }

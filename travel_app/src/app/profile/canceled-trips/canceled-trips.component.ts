@@ -16,9 +16,13 @@ export class CanceledTripsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteTripDialog(){
+  deleteTripDialog(canceledTripId: any){
 
-    const dialogRef=this.dialog.open(DeleteTripComponent);
+    const dialogRef=this.dialog.open(DeleteTripComponent,{
+      data:{
+        id: canceledTripId
+      }
+    });
 
   }
 

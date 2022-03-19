@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ProfileServiceService } from 'src/app/profile/profile-service.service';
 
 
 @Component({
@@ -21,14 +23,17 @@ export class AddToCardComponent implements OnInit {
   starRating3: boolean =false;
   starRating4: boolean =false;
   starRating5: boolean =false;
+ 
 
 
 
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public recievedData: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public recievedData: any, private ProfileService: ProfileServiceService, private router: Router) { }
 
   ngOnInit(): void {
+
+    console.log(this.recievedData)
 
     this.recievedData.grade.forEach((element: number) => {
       this.sum = this.sum + element;
@@ -60,14 +65,19 @@ export class AddToCardComponent implements OnInit {
       this.starRating5=true;
     }
     
+  }
+
+  user=this.ProfileService.currentUser;
 
 
-    /*(let index in ) {
-      this.sum = this.sum + this.recievedData.grade[index];
-      length++;
-    }
-    this.average_grade=this.sum/this.length;
-*/
+  async addToUserAccount(){
+
+      this.ProfileService.addTripToProfileTrips(this.user.id, this.recievedData).then(res=>{
+        console.log(res);
+      }).catch(error => {
+        console.log(error);
+      });;
+
   }
 
 }

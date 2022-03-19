@@ -72,7 +72,6 @@ export class TripsComponent implements OnInit {
   openReservationDialog(id: number) {
 
     var travel = this.TravelData.getCurrentTravelObject(id)
-    console.log(travel);
 
     const dialogRef = this.dialog.open(AddToCardComponent, {
       data: {

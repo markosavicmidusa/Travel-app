@@ -8,7 +8,7 @@
 <br>
 <p>Go to payment or cancel </p>
 <mat-dialog-actions>
-  <button color="primary" mat-button [mat-dialog-close]="true">Pay</button>
+  <button color="primary" mat-button [mat-dialog-close]="true" (click)="finishTrips()">Pay</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
   <button mat-button [mat-dialog-close]="true">Cancel</button>
 </mat-dialog-actions>

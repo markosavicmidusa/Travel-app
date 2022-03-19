@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export interface TripsModel {
 
-  id: number,
+  id: any,
   destination: string,
   picture_path: string,
   travel_type: string,
@@ -433,6 +433,10 @@ export class TripsServiceService {
 
   constructor() { }
 
+
+
+
+  
 
   getTravels(): Array<TripsModel> {
     var trips: Array<TripsModel> = [];
