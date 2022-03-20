@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { TripsModel } from '../trips/trips-service.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { collection, deleteDoc, getDocs, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, getDocs, query, setDoc, where } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore"
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { TravelType } from '../trips/trips.component';
+import { NgForm } from '@angular/forms';
+import { ConnectableObservable } from 'rxjs';
 
 
 export interface ProfileModel {
@@ -55,7 +57,7 @@ export interface ProfileTripsId {
 })
 export class ProfileServiceService {
 
-  db = getFirestore();
+  db = getFirestore(); // Profile
 
   static profiles: Array<ProfileModelId> = [
 
@@ -63,8 +65,8 @@ export class ProfileServiceService {
       id: '',
       name: '',
       surname: '',
-      password: '',
-      email: '',
+      password: 'test@enmail.com',
+      email: 'test@enmail.com',
       phone_number: '',
       address: '',
       favorite_trips: '',
@@ -78,7 +80,9 @@ export class ProfileServiceService {
 
   }
 
+  
   ngOnInit() {
+
   }
 
 
@@ -87,6 +91,9 @@ export class ProfileServiceService {
   /**FireStoreCrudOperations on Profile */
 
   currentUser: ProfileModelId = ProfileServiceService.profiles[0];
+  
+
+
   currentUserStatus: boolean = false;
 
 
@@ -95,14 +102,18 @@ export class ProfileServiceService {
    * 
   */
 
-  addTripToProfileTrips(profileId: string, data: TripsModel) {
+  async addTripToProfileTrips(profileId2: string, data: TripsModel) {
 
     var profile_trip: ProfileTrips = {
 
-      profile_id: profileId,
+      profile_id: profileId2,
       status: data.status,
       travels: data
     }
+    /*await setDoc(doc(this.db2, "ProfileTrips", profileId2), profile_trip);*/
+
+    console.log("Napravio sam profile_trip");
+    console.log(profile_trip);
 
     return this.fireservice.collection('ProfileTrips').add(profile_trip);
 
@@ -110,26 +121,46 @@ export class ProfileServiceService {
 
   profileTripsList: Array<ProfileTripsId> = [];
 
-  async getAllTripsFromUserId(id: string) {
+  /**
+   * Dobavlja sve Tripse iz baze ProfileTrip
+   * 
+   */
+  async getAllTripsFromUserId(id: string){
 
-    const querySnapshot = await getDocs(collection(this.db, 'ProfileTrips'));
+    this.profileTripsList= [];
+
+    const q = query(collection(this.db, "ProfileTrips")); 
+    const querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
-      if (doc.data()['profile_id'] === id) {
-        
-        this.profileTripsList.push({
+      this.profileTripsList.push({
 
-          id: doc.id,
-          profile_id: doc.data()['profile_id'],
-          status: doc.data()['status'],
-          travels: doc.data()['travels']
-
-        });
-      }
-
-      /*console.log(`${doc.id} => ${doc.data()}`);*/
+        id: doc['id'],
+        profile_id: doc.data()['profile_id'],
+        status: doc.data()['status'],
+        travels: doc.data()['travels']
+      });
     });
+    
 
+    /*const docRef = doc(this.db3, "ProfileTrips", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+
+      this.someTripsList.push({
+
+        id: docSnap.data()['id'],
+        profile_id: docSnap.data()['profile_id'],
+        status: docSnap.data()['status'],
+        travels: docSnap.data()['travels']
+
+      });
+
+    } else {
+     // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }*/
   }
 
 
@@ -156,7 +187,7 @@ export class ProfileServiceService {
     return this.sum;
 
   }
-
+    
   /**Update from trip basket in finished trips changing the status */
   updateTripStatusInProfileTrip(activeTripId: any) {
 
@@ -187,24 +218,26 @@ export class ProfileServiceService {
 
   /** Cancel trip method */
 
-  cancelTripInProfileTrips(activeTripId: any){
-    
+  async cancelTripInProfileTrips(activeTripId: any){
+    console.log("Ispred active trip id");
+    console.log(activeTripId);
     const dbRef = doc(this.db, "ProfileTrips", activeTripId);
 
-    this.profileTripsList.forEach(async trips => {
-      
-      if (trips.id === activeTripId) {
-        
-        await updateDoc(dbRef, {
-          status: 'canceled'
-        });
-      }
+    // Set the "capital" field of the city 'DC'
+    await updateDoc(dbRef, {
+      status: 'canceled'
     });
+    
   }
 
+
+
   /** Get Canceled Trips  */
+  
   getCanceledTravelsFromProfile(): Array<ProfileTripsId> {
     var travels1: Array<ProfileTripsId> = [];
+    
+    console.log(this.profileTripsList);
     this.profileTripsList.map((travel: any) => {
       if (travel.status === 'canceled') {
         travels1.push(travel);
@@ -227,16 +260,42 @@ export class ProfileServiceService {
   }
 
 
+   /* Update profile function*/
+   async updateProfile(form : NgForm, id: string) {
 
-
-
-
-  createNewProfile(Profile: ProfileModel) {
- 
-    return this.fireservice.collection('Profile').add(Profile);
+    const dbRef = doc(this.db, "Profile", id);
+    
+    await updateDoc(dbRef, {
+      name: form.value.name,
+      surname: form.value.surname,
+      email: form.value.email,
+      phone_number: form.value.phone_number,
+      address: form.value.address,
+      favorite_trips: form.value.favorite_trips
+    }).then(()=>{
+      console.log("sve je proslo kako treba");
+    }
+    ).catch(err=>{
+      console.log(err);
+    });
 
   }
 
+  /** Reaload */
+
+  reloadProfile(){
+
+    location.reload()
+    
+  }
+
+  /** Create New Profile*/
+  createNewProfile(Profile: ProfileModel) {
+    
+    return this.fireservice.collection('Profile').add(Profile);
+
+  }
+  /** Get All profiles funkicja */
   async getAllProfiles() {
 
     const querySnapshot = await getDocs(collection(this.db, 'Profile'));
@@ -248,9 +307,12 @@ export class ProfileServiceService {
 
   }
 
-  /**Da bi prosla greska u slucaju undefined */
-
+  /** Login funkicja */
   async logTheCurrentUser(email: string, password: string) {
+    var i=0;
+    i++;
+    console.log(i);
+    console.log("Zvanje loga");
 
     const querySnapshot = await getDocs(collection(this.db, "Profile"));
     querySnapshot.forEach((doc) => {
@@ -267,29 +329,45 @@ export class ProfileServiceService {
           travel: doc.data()['travel'],
           isLogedIn: true
         }
+        
         this.currentUserStatus = true;
-        this.getAllTripsFromUserId(doc.id);
-        /* console.log(`${doc.id} => ${doc.data()}`);*/
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
       }
 
     });
+
+    if(this.currentUserStatus){
+      console.log("Stigoh li do ovde");
+      console.log(this.currentUser);
+      this.getAllTripsFromUserId(this.currentUser.id);
+    }else{
+
+
+    }
+      
+
   }
 
-
   /** Logout funkicja */
-
   setUserStateToFalse() {
 
     this.currentUser = ProfileServiceService.profiles[0];
     this.currentUserStatus = false;
+    localStorage.clear();
+    location.reload();
+    
+    /*
     console.log(this.currentUser);
-    console.log(this.currentUserStatus);
+    console.log(this.currentUserStatus);*/
   }
 
   /**Login component function*/
-  isUserRegistred(email: string, password: string): any {
+    isUserRegistred(email: string, password: string): any {
     var user: boolean = false;
 
+   
+    
     ProfileServiceService.profiles.map(profile => {
 
       if (profile.email.toString().includes(email)) {
@@ -305,7 +383,7 @@ export class ProfileServiceService {
 
 
     });
-
+    
     return user;
   }
 }

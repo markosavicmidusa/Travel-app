@@ -18,6 +18,9 @@ export class MyBasketComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  activeTrips=this.ProfileService.getActiveTravelsFromProfile();
+  sumOfActiveTrips=this.ProfileService.getTotalSumOfActiveTravels();
+
   openPaymentDialog(activeTripId: any ){
     console.log(activeTripId);
     const dialogRef=this.dialog.open(PayTripComponent, {
@@ -27,14 +30,12 @@ export class MyBasketComponent implements OnInit {
     });
 
     /** Poziva funkciju za za update ProfileTrips statusa putovanja */
-    /*this.ProfileService.updateTripStatusInProfileTrip(activeTripId);*/
-
-
 
   }
 
   cancelTripDialog(activeTripId: any){
-  
+    
+    console.log(activeTripId);
     const dialogRef=this.dialog.open(CancelTripComponent,{
       data:{
         id: activeTripId
@@ -44,8 +45,7 @@ export class MyBasketComponent implements OnInit {
 
   }
 
-  activeTrips=this.ProfileService.getActiveTravelsFromProfile();
-  sumOfActiveTrips=this.ProfileService.getTotalSumOfActiveTravels();
+  
 
 
 

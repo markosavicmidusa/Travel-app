@@ -14,6 +14,7 @@ export class CancelTripComponent implements OnInit {
   ngOnInit(): void {
   }
   cancelTrip(){
+    console.log(this.recievedData.id)
     this.ProfileService.cancelTripInProfileTrips(this.recievedData.id);
   }
 }

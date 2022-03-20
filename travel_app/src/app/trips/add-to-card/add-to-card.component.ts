@@ -25,10 +25,6 @@ export class AddToCardComponent implements OnInit {
   starRating5: boolean =false;
  
 
-
-
-
-
   constructor(@Inject(MAT_DIALOG_DATA) public recievedData: any, private ProfileService: ProfileServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -74,10 +70,13 @@ export class AddToCardComponent implements OnInit {
 
       this.ProfileService.addTripToProfileTrips(this.user.id, this.recievedData).then(res=>{
         console.log(res);
+        console.log("Uspeo sam ");
       }).catch(error => {
         console.log(error);
-      });;
+        console.log("Greska");
+      });
 
+      
   }
 
 }

@@ -21,33 +21,44 @@
                 
             </div>
             <div *ngIf="isEditable">
-                <form action="">
+                <form #f="ngForm" (ngSubmit)="Update(f)">
 
                     <mat-form-field appearance="fill">
                         <mat-label>Name</mat-label>
-                        <input matInput>
+                        <input matInput type="text" name="name" [(ngModel)]="name">
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Surname</mat-label>
-                        <input matInput>
+                        <input matInput type="text" name="surname" [(ngModel)]="surname">
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Email</mat-label>
-                        <input matInput>
+                        <input matInput type="text" name="email" [(ngModel)]="email">
                     </mat-form-field>
-                    <mat-form-field appearance="fill">
+                   <!-- <mat-form-field appearance="fill">
                         <mat-label>Password</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                        <input matInput type="text" name="password" [(ngModel)]="password">
+                    </mat-form-field> -->
                     <mat-form-field appearance="fill">
                         <mat-label>Phone number</mat-label>
-                        <input matInput>
+                        <input matInput type="text" name="phone_number" [(ngModel)]="phone_number">
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Address</mat-label>
-                        <input matInput>
+                        <input matInput type="text" name="address" [(ngModel)]="address">
                     </mat-form-field>
-                    <button type="submit" color="primary" mat-raised-button>Submit</button>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Autosize textarea</mat-label>
+                        <textarea matInput
+                                  cdkTextareaAutosize
+                                  #autosize="cdkTextareaAutosize"
+                                  cdkAutosizeMinRows="1"
+                                  cdkAutosizeMaxRows="5"
+                                  type="text" name="favorite_trips" [(ngModel)]="favorite_trips"          
+                                  
+                        ></textarea>
+                      </mat-form-field>
+                    <button type="submit" color="primary" mat-raised-button >Save   changes</button>
                 </form>
             </div>
 

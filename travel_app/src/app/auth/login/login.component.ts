@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(public ProfileService: ProfileServiceService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   userStatus: boolean=this.ProfileService.currentUser.isLogedIn;
