@@ -58,7 +58,7 @@ import { CancelTripComponent } from './profile/my-basket/cancel-trip/cancel-trip
     AngularFirestoreModule
   ],
 
-  providers: [TripsServiceService, ProfileServiceService,LoginComponent],
+  providers: [TripsServiceService, ProfileServiceService, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

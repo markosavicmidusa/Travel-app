@@ -434,11 +434,10 @@ export class TripsServiceService {
   constructor() { }
 
 
-
-
-  
-
   getTravels(): Array<TripsModel> {
+    
+    console.log("Trips Service - Funkcija getTravels() ->  Vrsi funkciju foreach za svaki travel koji je izlistan iz baze i ubacuje unovi array koji ce kasnije koristiti");
+    
     var trips: Array<TripsModel> = [];
 
     TripsServiceService.travels.forEach((travel: TripsModel) => {
@@ -449,7 +448,7 @@ export class TripsServiceService {
 
   /** Vraca objekat TripsModel prema id-u -> koristio sam u : 1) Trips/AddtoCard/Matdialog*/
   getCurrentTravelObject(id: number): TripsModel {
-
+    console.log("Trips Service - Funkcija getCurrentTravelObject(id: number) ->  Vraca Objekat  tipa TripsModel prema id-ju");
     var currentTravel: any;
     currentTravel = TripsServiceService.travels.find((travel: any) => {
 
@@ -467,6 +466,8 @@ export class TripsServiceService {
     var fastFilteredTrips: Array<TripsModel> = [];
 
     TripsServiceService.travels.map((travel: TripsModel) => {
+
+      console.log("Trips Service - Funkcija getTravelsByParametar(parametar: any) -> Vec objasnjena");
 
       if (travel.destination.toString().toLowerCase().includes(parametar)) {
         fastFilteredTrips.push(travel);
@@ -490,7 +491,8 @@ export class TripsServiceService {
   }
 
   getTravelsByParametars(destination: string, price: any, travel_type: string): Array<TripsModel> {
-
+    
+    console.log("Trips Service - Funkcija getTravelsByParametars(destination: string, price: any, travel_type: string) -> Vec objasnjena");
     var fastFilteredTrips: Array<TripsModel> = [];
 
     TripsServiceService.travels.map((travel: TripsModel) => {

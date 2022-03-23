@@ -23,11 +23,11 @@ export class ProfileComponent implements OnInit {
    
 
   ngOnInit(): void {
-    console.log("evo me ngOnInit");
-    console.log(localStorage.getItem('email'));
+    
+   
   }
  
-   /*= this.ProfileService.isEditable;*/
+   
  
  
   
@@ -48,9 +48,10 @@ export class ProfileComponent implements OnInit {
   id: string = this.profile.id;
 
 
-  async Update(form : NgForm,) {
+  async Update(form : NgForm) {
 
-    console.log("We are editing");
+    console.log("Profile Component -> Update (form : NgForm) -> Pozviva funkciju updateProfile(form, this.id)");
+
     await this.ProfileService.updateProfile(form, this.id);
     this.isEditable=false;
     this.ProfileService.reloadProfile();

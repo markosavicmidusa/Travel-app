@@ -91,9 +91,6 @@ export class ProfileServiceService {
   /**FireStoreCrudOperations on Profile */
 
   currentUser: ProfileModelId = ProfileServiceService.profiles[0];
-  
-
-
   currentUserStatus: boolean = false;
 
 
@@ -104,19 +101,16 @@ export class ProfileServiceService {
 
   async addTripToProfileTrips(profileId2: string, data: TripsModel) {
 
+    console.log("Profile Service -> addTripToProfileTrips (profileId2: string, data: TripsModel) -> Dodajemo travel u ProfileTrips u Firestore ");
+
     var profile_trip: ProfileTrips = {
 
       profile_id: profileId2,
       status: data.status,
       travels: data
     }
-    /*await setDoc(doc(this.db2, "ProfileTrips", profileId2), profile_trip);*/
-
-    console.log("Napravio sam profile_trip");
-    console.log(profile_trip);
 
     return this.fireservice.collection('ProfileTrips').add(profile_trip);
-
   }
 
   profileTripsList: Array<ProfileTripsId> = [];
@@ -126,47 +120,41 @@ export class ProfileServiceService {
    * 
    */
   async getAllTripsFromUserId(id: string){
+    
+     this.profileTripsList= [];
 
-    this.profileTripsList= [];
+     console.log("Profile Service -> getAllTripsFromUserId(id: string) -> Pravi Snapshot iz Firestore-a, vrsi izlistavanje putovanja odredjenog korisnika i push-uje u array na lokalu sa kojim cemo manipulisati");
 
     const q = query(collection(this.db, "ProfileTrips")); 
     const querySnapshot = await getDocs(q);
-
+    
+  
+    
     querySnapshot.forEach((doc) => {
-      this.profileTripsList.push({
+    
+      if(doc.data()['profile_id'] === id.toString()){
+        
+        this.profileTripsList.push({
+          
+          id: doc['id'],
+          profile_id: doc.data()['profile_id'],
+          status: doc.data()['status'],
+          travels: doc.data()['travels']
+        });
+      }
 
-        id: doc['id'],
-        profile_id: doc.data()['profile_id'],
-        status: doc.data()['status'],
-        travels: doc.data()['travels']
-      });
     });
     
-
-    /*const docRef = doc(this.db3, "ProfileTrips", id);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-
-      this.someTripsList.push({
-
-        id: docSnap.data()['id'],
-        profile_id: docSnap.data()['profile_id'],
-        status: docSnap.data()['status'],
-        travels: docSnap.data()['travels']
-
-      });
-
-    } else {
-     // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }*/
+   
   }
 
 
   currentProfile = ProfileServiceService.profiles[0];
 
   getActiveTravelsFromProfile(): Array<ProfileTripsId> {
+    
+    console.log("Profile Service -> getActiveTravelsFromProfile() -> nad profileTripsList array vrsimo pretragu aktivnih putovanja za odgovarajuceg korisnika");
+
     var travels1: Array<ProfileTripsId> = [];
     this.profileTripsList.map((travel: any) => {
       if (travel.status === 'active') {
@@ -179,6 +167,8 @@ export class ProfileServiceService {
   sum = 0;
   getTotalSumOfActiveTravels(): number {
 
+    console.log("Profile Service -> getTotalSumOfActiveTravels() -> nad profileTripsList array vrsimo pretragu aktivnih putovanja za odgovarajuceg korisnika i sabiramo u u promenljivu sum");
+
     this.profileTripsList.map((travel: any) => {
       if (travel.status === 'active') {
         this.sum += travel.travels.price;
@@ -190,6 +180,9 @@ export class ProfileServiceService {
     
   /**Update from trip basket in finished trips changing the status */
   updateTripStatusInProfileTrip(activeTripId: any) {
+
+    console.log("Profile Service -> updateTripStatusInProfileTrip(activeTripId: any) -> nad profileTripsList array vrsimo pretragu aktivnog putovanja, sa odredjenim id parametrom i update-ujemo mu status u bazi na finished");
+    
 
     const dbRef = doc(this.db, "ProfileTrips", activeTripId);
 
@@ -206,6 +199,9 @@ export class ProfileServiceService {
 
   /**get method all ProfileTrips finished  status */
   getFinishedTravelsFromProfile(): Array<ProfileTripsId> {
+    
+    console.log("Profile Service -> getFinishedTravelsFromProfile() -> nad profileTripsList array vrsimo pretragu putovanja, sa statusom finished");
+
     var travels1: Array<ProfileTripsId> = [];
     this.profileTripsList.map((travel: any) => {
       if (travel.status === 'finished') {
@@ -219,22 +215,23 @@ export class ProfileServiceService {
   /** Cancel trip method */
 
   async cancelTripInProfileTrips(activeTripId: any){
-    console.log("Ispred active trip id");
-    console.log(activeTripId);
+
+    console.log("Profile Service -> updateTripStatusInProfileTrip(activeTripId: any) -> nad profileTripsList array vrsimo pretragu  putovanja, sa odredjenim id parametrom i update-ujemo mu status u bazi na canceled");
+    
+
     const dbRef = doc(this.db, "ProfileTrips", activeTripId);
 
-    // Set the "capital" field of the city 'DC'
     await updateDoc(dbRef, {
       status: 'canceled'
     });
     
   }
 
-
-
   /** Get Canceled Trips  */
-  
   getCanceledTravelsFromProfile(): Array<ProfileTripsId> {
+    
+    console.log("Profile Service -> getCanceledTravelsFromProfile() -> nad profileTripsList array vrsimo pretragu  putovanja sa statusom canceled");
+
     var travels1: Array<ProfileTripsId> = [];
     
     console.log(this.profileTripsList);
@@ -250,6 +247,8 @@ export class ProfileServiceService {
   /**delete method specific ProfileTrips in mybasket, finished trips, canceled trips */
   deleteTripInProfileTrips(activeTripId: any){
     
+    console.log("Profile Service -> deleteTripInProfileTrips(activeTripId: any) -> nad profileTripsList array vrsimo pretragu  putovanja po kriterijumu id i brisemo odgovarajuci zapis iz tabele na Firestore-u");
+
     this.profileTripsList.forEach(async trips => {
       
       if (trips.id === activeTripId) {
@@ -262,6 +261,9 @@ export class ProfileServiceService {
 
    /* Update profile function*/
    async updateProfile(form : NgForm, id: string) {
+
+
+    console.log("Profile Service -> updateProfile(form : NgForm, id: string) -> Updatujemo profil iz Firestore-a koji smo pronasli putem parametra funkcije id  ");
 
     const dbRef = doc(this.db, "Profile", id);
     
@@ -284,7 +286,7 @@ export class ProfileServiceService {
   /** Reaload */
 
   reloadProfile(){
-
+    console.log("Profile Service -> reloadProfile() -> izvrsava reload page-a na kome se nalazimo ");
     location.reload()
     
   }
@@ -292,11 +294,15 @@ export class ProfileServiceService {
   /** Create New Profile*/
   createNewProfile(Profile: ProfileModel) {
     
+    console.log("Profile Service -> createNewProfile(Profile: ProfileModel) -> Kreiramo novi profil prema profileModelu i unosimo ga u Firestore  ");
+
     return this.fireservice.collection('Profile').add(Profile);
 
   }
   /** Get All profiles funkicja */
   async getAllProfiles() {
+
+    console.log("Profile Service -> getAllProfiles() -> izlistaj sve profile iz baze ");
 
     const querySnapshot = await getDocs(collection(this.db, 'Profile'));
 
@@ -309,10 +315,8 @@ export class ProfileServiceService {
 
   /** Login funkicja */
   async logTheCurrentUser(email: string, password: string) {
-    var i=0;
-    i++;
-    console.log(i);
-    console.log("Zvanje loga");
+   
+    console.log("Profile Service -> logTheCurrentUser(email: string, password: string) -> Izvrsi proveru nase baze i tabele Profile i ukoliko postoji kreiraj objekat sa kojim cemo manipulisati naq lokalu ");
 
     const querySnapshot = await getDocs(collection(this.db, "Profile"));
     querySnapshot.forEach((doc) => {
@@ -331,27 +335,26 @@ export class ProfileServiceService {
         }
         
         this.currentUserStatus = true;
+        this.getAllTripsFromUserId(this.currentUser.id);
+
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
       }
 
     });
 
-    if(this.currentUserStatus){
-      console.log("Stigoh li do ovde");
-      console.log(this.currentUser);
-      this.getAllTripsFromUserId(this.currentUser.id);
-    }else{
-
-
-    }
+    // if(this.currentUserStatus){
+      
+    //   console.log(this.currentUser.id);
+    // }else{
+    // }
       
 
   }
 
   /** Logout funkicja */
   setUserStateToFalse() {
-
+    console.log("Profile Service -> setUserStateToFalse() -> Setujemo status usera inicijalno na false i dodeljujemo defaultne vrednosti objektu kako bi mogli da ucitamo sadrzaj jer ne dozvoljava nullable objekat i njegove stavke ");
     this.currentUser = ProfileServiceService.profiles[0];
     this.currentUserStatus = false;
     localStorage.clear();
@@ -364,10 +367,11 @@ export class ProfileServiceService {
 
   /**Login component function*/
     isUserRegistred(email: string, password: string): any {
+
+      console.log("Profile Service -> isUserRegistred(email: string, password: string) -> Vrsi proveru registracije korisnika ");
+
     var user: boolean = false;
 
-   
-    
     ProfileServiceService.profiles.map(profile => {
 
       if (profile.email.toString().includes(email)) {
