@@ -7,6 +7,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { TravelType } from '../trips/trips.component';
 import { NgForm } from '@angular/forms';
 import { ConnectableObservable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 export interface ProfileModel {
@@ -76,7 +77,7 @@ export class ProfileServiceService {
   ];
 
 
-  constructor(private fireservice: AngularFirestore) {
+  constructor(private fireservice: AngularFirestore, public router: Router) {
 
   }
 
@@ -226,7 +227,7 @@ export class ProfileServiceService {
     
     var travels1: Array<ProfileTripsId> = [];
     
-    console.log(this.profileTripsList);
+
     this.profileTripsList.map((travel: any) => {
       if (travel.status === 'canceled') {
         travels1.push(travel);
@@ -288,7 +289,7 @@ export class ProfileServiceService {
 
   }
   /** Get All profiles funkicja */
-  async getAllProfiles() {
+  /*async getAllProfiles() {
 
     
     const querySnapshot = await getDocs(collection(this.db, 'Profile'));
@@ -298,7 +299,7 @@ export class ProfileServiceService {
       console.log(`${doc.id} => ${doc.data()}`);
     });
 
-  }
+  }*/
 
   /** Login funkicja */
   async logTheCurrentUser(email: string, password: string) {
@@ -322,9 +323,10 @@ export class ProfileServiceService {
         
         this.currentUserStatus = true;
         this.getAllTripsFromUserId(this.currentUser.id);
-
+        this.router.navigate(['/trips']);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
+        
       }
 
     });
