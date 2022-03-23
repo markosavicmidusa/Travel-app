@@ -18,8 +18,7 @@ export class CanceledTripsComponent implements OnInit {
 
   deleteTripDialog(canceledTripId: any){
 
-    console.log("Cancel-trips components  -> deleteTripDialog(canceledTripId: any), poziva funkciju za otvara dialog za brisanje iz baze odgovarajuceg zapisa this.ProfileService.deleteTripInProfileTrips(this.recievedData.id)");
-
+    
     const dialogRef=this.dialog.open(DeleteTripComponent,{
       data:{
         id: canceledTripId

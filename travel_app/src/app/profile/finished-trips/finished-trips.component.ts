@@ -18,7 +18,7 @@ export class FinishedTripsComponent implements OnInit {
   }
 
   deleteTripDialog(finishedTripId: any){
-    console.log("Delete trip  -> deleteTripDialog(finishedTripId: any), otvara dialog za brisanje iz baze odgovarajuceg zapisa");
+    
     const dialogRef=this.dialog.open(DeleteTripComponent,{
       data:{
         id: finishedTripId
@@ -28,7 +28,7 @@ export class FinishedTripsComponent implements OnInit {
   }
   rateTrip(){
     const dialogRef=this.dialog.open(RateTripComponent);
-    console.log("Delete trip  -> rateTrip(), otvara dialog za Rate tripa");
+    
   }
 
 

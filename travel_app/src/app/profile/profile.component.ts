@@ -50,8 +50,7 @@ export class ProfileComponent implements OnInit {
 
   async Update(form : NgForm) {
 
-    console.log("Profile Component -> Update (form : NgForm) -> Pozviva funkciju updateProfile(form, this.id)");
-
+    
     await this.ProfileService.updateProfile(form, this.id);
     this.isEditable=false;
     this.ProfileService.reloadProfile();

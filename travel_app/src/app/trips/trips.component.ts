@@ -67,7 +67,7 @@ export class TripsComponent implements OnInit {
 
 
   openReservationDialog(id: number) {
-    console.log("Trips component - Korisnicka metoda openReservationDialog -> Pozivamo dve funkcije : 1) getCurrentTravelObject(id) -> Funkcija koja vrsi pronalazi  odgovarajuce putovanje prema id-ju i vraca objekat Putovanja 2) openReservationDialog(id: number) -> Otvara Dialog za rezervaciju putovanja ");
+    
     var travel = this.TravelData.getCurrentTravelObject(id)
 
     const dialogRef = this.dialog.open(AddToCardComponent, {
@@ -92,7 +92,7 @@ export class TripsComponent implements OnInit {
   }
 
   fastSearch(parametar: any) {
-    console.log(" Trips Component Fast Search Input-> Poziva getTravelsByParametar(parametar.value), vrsi pretragu prema bilo kom parametru ");
+    
     this.travelsObject = [];
     this.travelsObject= this.TravelData.getTravelsByParametar(parametar.value);
      
@@ -100,14 +100,13 @@ export class TripsComponent implements OnInit {
 
   onSubmit(form: NgForm){
   
-    console.log(" Trips Component Forma Pretrage -> Poziva getTravelsByParametars(form.value.direction, form.value.price, form.value.travel_type)");
     this.travelsObject = [];
     this.travelsObject= this.TravelData.getTravelsByParametars(form.value.direction, form.value.price, form.value.travel_type);
   
   }
 
   putOnPreviousState(){
-    console.log(" Trips Component putOnPreviousState() -> Vraca se na predhodno stanje");
+    
     this.travelsObject = [];
     this.travelsObject = this.TravelData.getTravels();
   }

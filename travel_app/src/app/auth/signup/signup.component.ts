@@ -19,9 +19,7 @@ export class SignupComponent implements OnInit {
   messageError:string='';
   async onSubmit(form : NgForm){
     
-      console.log("Korisnicka funkcija onSubmit(form : NgForm), koja poziva  this.ProfileService.createNewProfile(profile) iz servisa za kreiranje profila");
-    
-    console.log(form)
+      
     /**Kod za upis podataka u bazu */
     let profile: ProfileModel = {
       name: form.value.forname,
@@ -47,14 +45,13 @@ export class SignupComponent implements OnInit {
   }
 
   goToLogin(){
-    console.log("Signup component -> Korisnicka funkcija goToLogin(), koja poziva this.router.navigate(['/login']);");
+    
     this.router.navigate(['/login']);
   }
 
 
   passwordLength(passwordLength: number){
     
-    console.log("Signup component -> Korisnicka funkcija passwordLength(passwordLength: number), koja proverava doszoljenu duzinu passworda");
     let isPaswordUnvalid = false;
 
     if(passwordLength > 10){

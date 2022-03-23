@@ -15,7 +15,6 @@ export class DeleteTripComponent implements OnInit {
   }
 
   deleteTrip(){
-    console.log("Delete trip  -> deleteTrip(), poziva funkciju za otvara dialog za brisanje iz baze odgovarajuceg zapisa this.ProfileService.deleteTripInProfileTrips(this.recievedData.id)");
     
     this.ProfileService.deleteTripInProfileTrips(this.recievedData.id);
   }

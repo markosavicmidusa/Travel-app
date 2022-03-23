@@ -14,7 +14,7 @@ export class CancelTripComponent implements OnInit {
   ngOnInit(): void {
   }
   cancelTrip(){
-    console.log("Cancel trip -> cancelTrip(), poziva funkciju iz ProfileServica this.ProfileService.cancelTripInProfileTrips(this.recievedData.id), kojom menjamo status odgovarajuceg zapisa u Firestore-u u cancel");
+    
     this.ProfileService.cancelTripInProfileTrips(this.recievedData.id);
   }
 }
