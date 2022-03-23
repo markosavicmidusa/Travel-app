@@ -22,6 +22,9 @@ export class MyBasketComponent implements OnInit {
   sumOfActiveTrips=this.ProfileService.getTotalSumOfActiveTravels();
 
   openPaymentDialog(activeTripId: any ){
+
+    console.log("My basket -> openPaymentDialog(activeTripId: any ), otvara dialog za placanje stavke iz korpe");
+
     console.log(activeTripId);
     const dialogRef=this.dialog.open(PayTripComponent, {
       data:{
@@ -35,6 +38,8 @@ export class MyBasketComponent implements OnInit {
 
   cancelTripDialog(activeTripId: any){
     
+    console.log("My basket -> cancelTripDialog(activeTripId: any), otvara dialog za cancel trip-a");
+
     console.log(activeTripId);
     const dialogRef=this.dialog.open(CancelTripComponent,{
       data:{

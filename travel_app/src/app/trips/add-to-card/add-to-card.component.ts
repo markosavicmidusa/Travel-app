@@ -29,7 +29,7 @@ export class AddToCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.recievedData)
+    console.log(" add-to-card component -> ngOnInit -> Racuna average_grade i po tome setuje zvezdize kao ocenu zadovoljstva korisnika ");
 
     this.recievedData.grade.forEach((element: number) => {
       this.sum = this.sum + element;
@@ -67,6 +67,8 @@ export class AddToCardComponent implements OnInit {
 
 
   async addToUserAccount(){
+
+    console.log(" add-to-card component -> korisnicka funkcija addToUserAccount() -> Poziva funkciju  addTripToProfileTrips(this.user.id, this.recievedData) i adduje usera u bazu podataka ")
 
       this.ProfileService.addTripToProfileTrips(this.user.id, this.recievedData).then(res=>{
         console.log(res);
